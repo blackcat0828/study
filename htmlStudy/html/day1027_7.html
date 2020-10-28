@@ -1,0 +1,75 @@
+ <!DOCTYPE>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>테이블 예제</title>
+    
+    <style>
+    table 
+        { 
+         border: 1px solid blue;
+         border-collapse: collapse;
+         text-align: center;
+        }
+     td {
+        border: 2px solid #cc2424;    
+        }
+        #a {
+            color: yellow;
+        }
+        
+        #b{
+            color: yellow;
+        }
+    
+    
+    </style>
+</head>
+
+<body>
+    <table bordercolor="blue" width="500" height="300" align="center">
+        <tr bgcolor="blue" align="center">
+            <p>
+                <td colspan="3" span style="color:white">오늘의 수입/지출</td>
+            </p>
+        </tr>
+        <tr align="center" bgcolor="skybule">
+            <td>내용</td>
+            <td>수입</td>
+            <td>지출</td>
+        </tr>
+        <tr>
+            <td>월급!</td>
+            <td>1,000,000</td>
+            <td></td>
+        </tr>
+
+           
+           <tr>
+            <td>점심값</td>
+            <td></td>
+            <td>5,000</td>
+        </tr>
+        <tr>
+            <td>부모님선물</td>
+            <td></td>
+            <td>30,000</td>
+        </tr>
+        <tr>
+            <td rowspan="3" align="center" bgcolor="skyblue">총계</td>
+            <td id="a">수입</td>
+            <td id="b">지출</td>
+        </tr>
+        <tr>
+            <td>1,000,000</td>
+            <td>35,000</td>
+        </tr>
+        <tr>
+            <td>남은돈</td>
+            <td>965,000</td>
+        </tr>
+    </table>
+</body>
+
+</html>
