@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    'use strict';
+    let a;
+    let buttonClick;
+    
+    window.onload=function(){
+    a = document.getElementById('button');
+    a.addEventListener("click", buttonClickEventHandler);
+    }
+
+    function buttonClickEventHandler(){
+        buttonClick = prompt('나이를 입력해 주세요.', "");
+        let age = confirm(`당신의 나이가 ${buttonClick}이 맞습니까?`)
+        if(age=true){
+            alert(`당신의 나이는 ${buttonClick} 입니다.`)
+        }
+        }
+    
+
+</script>
+<body>
+    <button id="button">클릭하세요</button>
+
+
+</body>
+</html>

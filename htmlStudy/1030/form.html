@@ -1,78 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        table{
+        table {
             border-collapse: collapse;
             border: 1px solid black;
-            
+            width: 80%;
+
         }
-        
-        th, td {
+
+        th,
+        td {
             border: 1px solid black;
         }
-        .col1 {width: 30%}
-        .col2 {width: 70%}
-        
-        
+
+        .c1 {
+            width: 40%;
+            background-color: yellow;
+
+        }
+
+
+        #submit {
+            background-color: white;
+        }
+
+        .submitTd {
+            border-right-style: hidden;
+        }
     </style>
-    <script>
-        console.log(3);
-    </script>
 </head>
+
 <body>
-    <h1>lable 요소</h1>
-       <form>
+    <form action="#" method="GET">
         <table>
             <caption>회원가입 입력</caption>
             <colgroup>
-                <col class="col1">
-                <col class="col2">
+                <col class="c1">
+                <col class="c2">
             </colgroup>
             <tbody>
                 <tr>
                     <th scope="row"><label for="id">아이디</label></th>
-                    <td><input type="text" id="id" title="아이디 입력"></td>
-                    
+                    <td><input type="text" name="id" id="id" placeholder="아이디 입력" required></td>
+
                 </tr>
-                <tr>   
-                    <th scope="row"><lable for="pw">비밀번호</lable></th>
-                    <td><input type="password" id="pw" title="비밀번호 입력"></td>
+                <tr>
+                    <th scope="row">
+                        <lable for="pw">비밀번호</lable>
+                    </th>
+                    <td><input type="password" name="pw" id="pw" placeholder="비밀번호 입력" required></td>
                 </tr>
                 <tr>
                     <th scope="row"><label for="r_pw">비밀번호 재입력</label></th>
-                    <td><input type="password" id="r_pw" title="비밀번호 재입력"></td>
-                    
+                    <td><input type="password" name="r_pw" id="r_pw" placeholder="비밀번호 재입력" required></td>
+
                 </tr>
                 <tr>
                     <th scope="row"><label for="email">이메일</label></th>
-                    <td><input type="text" id="email" title="이메일아이디 입력">@<input type="text" title="이메일주소 입력"></td>
-                    
+                    <td><input type="text" name="email" id="email" placeholder="이메일아이디 입력" required>
+
                 </tr>
                 <tr>
                     <th scope="row"><label for="hp">핸드폰 번호</label></th>
+                    <td><input type="text" name="hp" id="hp" placeholder="연락처 입력" required>
+                </tr>
+                <tr>
+                    <th scope="row"><label>취미</label></th>
                     <td>
-                        <select id="hp" title="휴대폰 앞자리 선택">
-                           <optgroup>
-                               <option>뭘까</option>
-                               <option>뭘까</option>
-                               <option>뭘까</option>
-                               <option>뭘까</option>
-                           </optgroup>
-                            <option>선택</option>
-                            <option>010</option>
-                            <option>011</option>
-                        </select>
-                        <input type="text" title="휴대폰 번호 중간 4자리 입력">
-                        <input type="text" title="휴대폰 번호 끝 4자리 입력">
+                        <input type="checkbox" name="hobby" value="탁구">탁구
+                        <input type="checkbox" name="hobby" value="등산">등산
+                        <input type="checkbox" name="hobby" value="농구">농구
                     </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr id="submit">
+                    <td class="submitTd"></td>
+                    <td><input type="submit" value="회원가입"><input type="reset" value="취소"></td>
+                </tr>
+            </tfoot>
         </table>
-        <div><input type="submit" value="회원가입"><input type="reset" value="취소"></div>
     </form>
-    
+
 </body>
+
 </html>

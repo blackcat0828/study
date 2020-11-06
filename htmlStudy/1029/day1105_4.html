@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            width: 80%;
+            text-align: center;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>회원내역</caption>
+        <tr>
+            <th scope="row">이름</th>
+            <td>홍길동</td>
+            <th scope="row">연락처</th>
+            <td>010-1234-5678</td>
+        </tr>
+        <tr>
+            <th scope="row">주소</th>
+            <td colspan="3">부산광역시 동래구</td>
+        </tr>
+        <tr rowspan=>
+            <th scope="row" rowspan="2">취미</th>
+            <td colspan="3">농구</td>
+        </tr>
+        <tr>
+            <td colspan="3">독서</td>
+        </tr>
+    </table>
+</body>
+
+</html>
