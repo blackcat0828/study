@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        ul {padding: 0; margin:0;}
+        li {list-style-type: none;}
+        h1 { 
+            padding: 10px 20px; background: darkblue; color: #fff; font-size: 20px; 
+                text-align: center;
+            }
+        .gnb {
+            display: flex;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            flex-direction:row;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            /* justify-content: space-around; */
+        }
+
+        .gnb li {
+            flex: 1;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            margin: 0;
+        }
+
+        .gnb li a {
+            display: block; padding: 8px; text-decoration: none;
+            background: lightblue; color: darkblue; text-align: center;
+        }
+
+        @media all and (min-width:600px) {
+            .gnb {
+                flex-direction: row;
+                -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                justify-content: space-around;
+                -webkit-justify-content: space-around;
+                background: lightblue;
+            }
+
+            .gnb li {
+                flex: 0 0 80px;
+                -webkit-flex: 0 0 80px;
+                -ms-flex: 10px;
+            }
+            .gnb li a {padding: 0;}            
+        }
+
+        @media all and (min-width:900px) {
+
+            .gnb {
+                justify-content: flex-start;
+                -webkit-justify-content: flex-start;
+            }
+
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>regarding FLEX...</h1>
+            <ul class="gnb">
+                <li><a herf="#">company</a></li>
+                <li><a herf="#">service</a></li>
+                <li><a herf="#">customer</a></li>
+                <li><a herf="#">community</a></li>
+            </ul>
+    </header>
+</body>
+</html>

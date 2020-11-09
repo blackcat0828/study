@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .flexbox {
+            display: flex;
+            display: -webkit-flex;
+            align-items: baseline;
+            -webkit-align-items: baseline;
+            height: 200px;
+            background: #ccc;
+        }
+
+        .flexbox>div {
+            flex: 1 1 100px;
+            -webkit-flex: 1 1 100px;
+            background: darkblue;
+            margin: 10px;
+            font-size: 20x;
+            color: #fff;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="flexbox">
+        <div>child1</div>
+        <div>
+            <h2>child2</h2>
+        </div>
+        <div>child3</div>
+    </div>
+</body>
+
+</html>
