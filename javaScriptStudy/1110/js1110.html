@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+   
+   let name = prompt("이름입력", "");
+   let kor = Number(prompt("국어점수"));
+   let eng = Number(prompt("영어점수"));
+   let math = Number(prompt("수학점수"));
+   let avg = Math.round((kor+eng+math)/3);
+   let grade = cal(avg);
+   
+   
+   function cal (avg){
+                
+                if(avg >= 90){
+                    return "A학점"
+                }
+                else if(avg >= 80){
+                    return "B학점"
+                }
+                else if(avg >= 70){
+                    return "C학점"
+                }
+                else if(avg >= 60){
+                    return "D학점"
+                }
+                else{
+                    return "F학점"
+                }   
+        }
+
+        document.write(
+            "이름 : " + name + "<br>" +
+            "국어 : " + kor + "<br>" +
+            "영어 : " + eng + "<br>" +
+            "수학 : " + math + "<br>" +
+            "평균 : " + avg + "<br>" +
+            "학점 : " + grade + "<br>" 
+        )
+
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
