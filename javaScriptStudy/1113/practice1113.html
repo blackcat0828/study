@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+
+function obTest(name, age, Hobby, eat){
+    obe2 = {
+        name,
+        age,
+        Hobby,
+        eat
+    }
+
+
+}
+
+
+function Human(name, age, power){
+        this.name = name;
+        this.age = age;
+        this.power = power;
+        this.printOut = function() {
+            document.write("안녕히 계세요 여러분!");
+        }
+
+}
+
+let jeff = new Human("Jeff", 33, "full power");
+jeff.birth = "1988-11-06";
+
+document.write("Jeff 정보 : " + jeff.name + jeff.power+ "<br>");
+window.onload = jeff.printOut();
+document.write("<br>"+"<br>"+ jeff.power);
+
+document.write("<br>"+"<br>");
+document.write("<br>"+"<br>");
+for(let key in jeff){
+    document.write(key);
+    document.write(jeff[key]);
+
+}
+document.write("<br>"+"<br>");
+console.log(jeff["birth"]);
+document.write("실험: "+jeff["birth"]);
+
+let Hobby = "hello";
+
+let obe = {
+    name,
+    age : 33,
+    [Hobby] : "hi",
+    test(){
+        return this;
+    },
+    eat : function eating(abc){document.write(abc)}
+
+};
+
+document.write("this 테스트 : " + obe.test.name);
+
+document.write("<br>"+"<br>"+obe.hello+obe.age);
+
+
+</script>
+
+
+<body>
+    
+</body>
+</html>

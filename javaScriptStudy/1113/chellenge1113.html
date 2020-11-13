@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    class FirstClass {
+            constructor(name, age, weight){
+                    this.name = name;
+                    this.age = age;
+                    this.weight = weight;
+                    this.days = [80, 120, 140];
+                    this.day = this.days[0];
+            }
+    
+            
+        printOut(){
+            return "이름 : " + this.name + "<br>"+
+            "이름 : " + this.age + "<br>"+
+            "이름 : " + this.weight + "<br>"+
+            "날짜 : " + this.day + "<br>";
+
+        }
+
+        test(){
+            alert(this.name);
+        }
+
+        get getDay(){
+            return this.day;
+        }
+
+        set setDay(num){
+            this.day = this.days[num];
+        }
+    }
+
+
+let jeff = new FirstClass("jeff",32,44);
+
+// document.write(jeff.day);
+// jeff.setDay = 2;
+
+document.write(jeff.printOut());
+
+jeff.test();
+
+
+
+
+</script>
+<body>
+    
+</body>
+</html>
