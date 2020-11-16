@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .wrap {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50px 100px 50px;
+    }
+
+    .wrap>div {
+        font-size: 30px;
+    }
+
+    .grid1 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        background: red;
+    }
+
+    .grid2 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        background: green;
+    }
+
+    .grid3 {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        background: blue;
+    }
+
+    .grid4 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        background: yellow;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="grid1">header</div>
+        <div class="grid2">aside</div>
+        <div class="grid3">content</div>
+        <div class="grid4">footer</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        let evenSum = 0;
+        let oddSum = 0;
+        let total = 0;
+
+
+        for (let i = 1; i <= 100; i++) {
+            if (i % 2 === 0) {
+                evenSum += i;
+            } else {
+                oddSum += i;
+            }
+        }
+
+        total = evenSum + oddSum;
+
+        document.write("짝수합 : " + evenSum + "<br>" +
+            "홀수합 : " + oddSum + "<br>" +
+            "총계 : " + total);
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+</body>
+
+</html>

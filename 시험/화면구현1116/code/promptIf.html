@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script>
+    let menuPrice = prompt("메뉴를 선택하세요? 1.짜장면(4,500원) 2.짬뽕(5,000원) 3.탕수육(12000원)");
+    let amount = prompt("수량을 입력하세요");
+    let menuName;
+    
+    if (menuPrice == 1) {
+        menuPrice = 4500;
+        menuName = "짜장면";
+    } else if (menuPrice == 2) {
+        menuPrice = 5000;
+        menuName = "짬뽕";
+    } else if (menuPrice == 3) {
+        menuPrice = 12000;
+        menuName = "탕수육";
+    } else {
+        alert("1~3번중에 고르세요.")
+    }
+
+    let totalPrice = menuPrice * amount;
+
+
+    document.write("주문하신 " + menuName + " " + amount + "개의 가격은 " + totalPrice + "원 입니다.");
+</script>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    @keyframes fintech {
+        0% {
+            background: red;
+            transform: translate(0, 0);
+        }
+
+        50% {
+            background: blue;
+            transform: translate(50px, 50px);
+        }
+
+        100% {
+            background: green;
+            transform: translate(100px, 100px);
+        }
+    }
+
+    p {
+        width: 200px;
+        height: 200px;
+        background: red;
+        animation-name: fintech;
+        animation-duration: 6s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 2;
+        animation-direction: reverse;
+    }
+</style>
+
+<body>
+    <p>
+        에니메이션 <br> 테스트
+    </p>
+</body>
+
+</html>

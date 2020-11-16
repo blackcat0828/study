@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    .flexbox {
+        display: flex;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+    }
+
+    .flexbox>div {
+        flex: 1 1 50px;
+        -webkit-flex: 1 1 50px;
+        -ms-flex: 1 1 50px;
+        height: 100px;
+        margin: 10px;
+    }
+
+    div div:nth-child(1) {
+
+        background: yellow;
+    }
+
+    div div:nth-child(2) {
+
+        background: green;
+    }
+
+    div div:nth-child(3) {
+
+        background: red;
+    }
+</style>
+
+<body>
+    <div class="flexbox">
+        <div>A구역</div>
+        <div>B구역</div>
+        <div>C구역</div>
+    </div>
+</body>
+
+</html>

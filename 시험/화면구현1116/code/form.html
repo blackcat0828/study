@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    body {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    form {
+        font-size: 20px;
+    }
+
+    legend {
+        color: blue;
+    }
+
+    #submit {
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+
+    <h1>상품 주문서</h1>
+    <form action="#" method="POST">
+        <fieldset>
+            <legend>개인 정보</legend>
+            <table>
+                <tr>
+                    <th scope="row"><label for="name"">이름</label></th>
+                <td><input type=" text" name="name" id="name" placeholder="공백없이 입력하세요" required></td>
+
+                </tr>
+
+                <tr>
+                    <th scope="row"><label for="contact">연락처</label></th>
+                    <td><input type="text" name="contact" id="contact" placeholder="연락처를 입력하세요" required></td>
+
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>배송 정보</legend>
+            <table>
+                <tr>
+                    <th scope="row"><label for="address">주소</label></th>
+                    <td><input type="text" name="address" id="address" placeholder="배송주소를 입력하세요" required></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="delivery">배송일</label></th>
+                    <td><input type="text" name="delivery" id="delivery" placeholder="배송일을 입력하세요" required></td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="address">요청사항</label></th>
+                    <td><textarea rows="3" cols="40" name="address" id="address"></textarea></td>
+                </tr>
+
+                <tr id="submit">
+                    <td colspan="2"><input type="submit" value="주문하기">
+                        <input type="reset" value="취소"></td>
+                </tr>
+            </table>
+        </fieldset>
+
+    </form>
+
+
+</body>
+
+</html>
