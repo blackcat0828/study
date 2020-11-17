@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            float: right;
+            left: 100px;
+            top: 50px;
+            width: 200px;
+            height: 200px;
+            background: lightgreen;
+        }
+
+        ul {
+            background: lightpink;
+        }
+
+        li {
+            background: lightsalmon;
+        }
+    </style>
+    <Script>
+        window.onload = function createEle(){
+            let bt = document.getElementById('bt');
+            let list = document.getElementById('list')
+            function pop(){
+                let div = document.createElement('div');
+                let p = document.createElement('p');
+                let txt = document.createTextNode('자바스크립트');
+                
+                p.appendChild(txt);
+                div.appendChild(p);
+                
+                document.body.appendChild(div)
+
+                
+            }
+
+            function pop2(){
+                let ul = document.createElement('ul');
+               
+                let txt = [];
+                let li = [];
+                for(let i = 0; i<10; i++){
+                    txt[i] = document.createTextNode('리스트실험');
+                    
+                }
+                for(let i = 0; i<10; i++){
+                    li[i] = document.createElement('li');
+                    li[i].appendChild(txt[i]);
+                    console.log(li[i]);
+                }
+
+                 
+                for (let a of li){
+                    
+                    ul.appendChild(a);
+                }
+                
+                document.body.appendChild(ul);
+            }
+
+            bt.onclick = pop;
+            list.onclick = pop2;
+        }
+
+    </Script>
+</head>
+<body>
+    <button id="bt">요소생성</button>
+    <button id="list">요소2</button>
+</body>
+</html>

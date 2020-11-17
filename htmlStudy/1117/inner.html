@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            float: right;
+            left: 100px;
+            top: 50px;
+            width: 200px;
+            height: 200px;
+            background: lightgreen;
+        }
+
+        ul {
+            background: lightpink;
+        }
+
+        li {
+            background: lightsalmon;
+        }
+    </style>
+
+<script>
+        window.onload = function inner(){
+            let bt = document.getElementById('bt');
+            let con = document.getElementById('con');
+            function conInner(){
+                con.innerHTML = "<ul><li>내용1</li><li>내용2</li></ul>";
+            }
+
+            bt.onclick = conInner;
+
+
+        }
+
+</script>
+
+
+</head>
+<body>
+    <button id="bt">이너</button>
+    <div id="con"><a id = 'aTag'>하이루</a></p>
+</body>
+</html>

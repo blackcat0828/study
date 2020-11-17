@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function cli() {
+            let blue = document.getElementById('blue');
+            let red = document.getElementById('red');
+            let text1 = document.getElementById('text');
+            
+            function changeBlue(){
+                
+                text1.style.color='blue';
+                blue.removeEventListener('click',changeBlue);
+                
+            }
+            function changeRed(){
+                
+                text1.style.color='red';
+                red.removeEventListener('click',changeRed);
+            }
+
+            function changeGreen(){
+                
+                text1.style.color='green';
+                green.removeEventListener('click',changeGreen);
+            }
+
+
+            blue.addEventListener('click',changeBlue);
+           
+            red.addEventListener('click',changeRed);
+            green.addEventListener('click',changeGreen);
+            
+            
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <p id = "text">자바스크립트</p>
+
+    <button id="blue">blue</button>
+    <button id="red">red</button>
+    <button id="green">green</button>
+
+</body>
+</html>
