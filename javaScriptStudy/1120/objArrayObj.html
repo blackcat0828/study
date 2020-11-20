@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    class Fruit{
+        constructor(banana, orange, apple){
+            this.banana = banana;
+            this.orange = orange;
+            this.apple = apple;
+
+
+        }
+
+
+
+    } 
+
+
+    let fruitSet1 = new Fruit(2000,3000,4000);
+    
+    for(let a in fruitSet1){
+        document.write("<br> value is "+a);
+    }
+
+
+    
+    let doubleFruits = Object.entries(fruitSet1);
+    document.write("<br> array is : "+doubleFruits[0][0] + "<br>" + doubleFruits[0][1] 
+    +"<br>"+ doubleFruits[2]);
+
+    let double2 = doubleFruits.map(([a,b])=>[a,b*3]);
+
+
+    for (let a of double2){
+        document.write("<br> After : "+a);
+    }
+
+    let fruitset2 = Object.fromEntries(double2);
+
+    for(let a in fruitset2){
+        document.write("final test : " + a + " -> " + fruitset2[a]);
+    }
+
+
+</script>
+
+
+
+
+<body>
+    
+</body>
+</html>

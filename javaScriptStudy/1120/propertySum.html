@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+
+function sumSalaries(allSalaries){
+    let array = Object.entries(allSalaries);
+    let totalSal = 0;
+    for(let [a,b] of array){
+         totalSal += b;
+    }
+
+    return totalSal;
+}
+
+let salValue = Object.values(salaries);
+document.write("Object value : " + salValue[0] +"<br>");
+
+
+document.write(sumSalaries(salaries));
+
+
+</script>
+
+</head>
+<body>
+    
+</body>
+</html>
