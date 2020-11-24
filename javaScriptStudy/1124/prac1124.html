@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+let user = {
+    name : "Jeff",
+    age : 32,
+    nation : "Korea",
+    major : "IT",
+    size : {big: 100, small : 80},
+    arr : [1,2,3,4]
+};
+
+let {
+    name,
+    age,
+    major,
+    nation,
+    arr : [a,b,c,d],
+    size : {big : size1, small}
+
+} = user;
+
+var o = {p: 42, q: true};
+var {p, q} = o;
+
+document.write(p);
+document.write(q);
+document.write(size1);
+document.write(small);
+document.write(size);
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>
