@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+    let date = new Date(2015,0,2);
+    let newDate = new Date();
+    function getDayAgo(date, day){
+        let now = date.getTime();
+        let mily = day * 24 * 3600 * 1000;
+        let ago = new Date(now-mily);
+        return ago;
+    }
+
+  
+
+document.write("체크: " + date.getDate()+"<br>");
+document.write(getDayAgo(date, 365).getFullYear()+"<br>");
+
+</script>
+
+</head>
+<body>
+    
+</body>
+</html>
