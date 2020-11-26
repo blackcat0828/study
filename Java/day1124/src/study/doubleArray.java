@@ -12,11 +12,11 @@ public class doubleArray {
                 sum[i] += score[i][j];
             }
 
-            avg[i] = sum[i] / (double) score[i].length;
+            avg[i] = Math.round(sum[i] / (double) score[i].length);
         }
 
-        System.out.println("성적표");
-        System.out.println("이름   국어 영어 수학 총점 평균");
+        System.out.println("\t\t\t성적표\n");
+        System.out.println(" 이름  국어 영어 수학 총점 평균");
         for (int i = 0; i < score.length; i++) {
             System.out.print(name[i] + "  ");
             for (int j = 0; j < score[i].length; j++) {
