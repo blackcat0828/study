@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="059bc6d9-5bca-4185-8669-8d7b9478bcd3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ch03/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ch03/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Java/day1208/day1208.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Java/day1208/src/doubleClass/RemoteControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ch5-2/ch5-2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ch03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ch03/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch05.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ch05.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,19 +33,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\study\TypeScript\project\ch05\node_modules\typescript\lib" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -84,6 +88,7 @@
       <updated>1607045508279</updated>
       <workItem from="1607045509485" duration="1048000" />
       <workItem from="1607046964717" duration="9734000" />
+      <workItem from="1607402936729" duration="4648000" />
     </task>
     <servers />
   </component>

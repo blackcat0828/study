@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f861dbf-e71f-4d57-8822-79d04f5aea9d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ch05/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ch05/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ch05/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ch05/ch05.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ch05/ch05.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Java/day1208/day1208.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Java/day1208/src/doubleClass/RemoteControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +23,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="ts.external.directory.path" value="C:\study\TypeScript\project\ch03\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\KTE-012\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\203.5981.155\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -37,7 +49,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607061405147</updated>
-      <workItem from="1607061406760" duration="933000" />
+      <workItem from="1607061406760" duration="934000" />
+      <workItem from="1607386705645" duration="2835000" />
     </task>
     <servers />
   </component>
@@ -54,5 +67,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
