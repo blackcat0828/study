@@ -1,0 +1,19 @@
+DB이름 : fintech
+테이블이름 : dept
+속성		데이터타입	제약조건
+deptno		int(2)		primary key	// 부서번호
+dname		varchar(20)	not null	// 부서이름
+loc		varchar(20)			// 지역
+
+테이블이름 : emp
+속성		데이터타입	제약조건
+empno		int(4)		primary key	// 사원번호
+ename		varchar(10)	not null	// 사원이름
+job		varchar(20)	not null	// 직급
+mgr		int(4)				// 매니저
+hiredate	date				// 입사일
+sal		int(8)				// 연봉
+comm		int(8)				// 커미션
+deptno		int(2)		foreign key  	// 부서번호
+				- dept(deptno)
+foreign key(deptno) references dept(deptno)

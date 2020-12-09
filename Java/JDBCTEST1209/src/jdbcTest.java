@@ -1,7 +1,9 @@
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class jdbcTest {
-
     public static void main(String[] args) {
         String driver = "oracle.jdbc.driver.OracleDriver";
         String url = "jdbc:oracle:thin:@localhost:1521:orcl";
@@ -29,7 +31,7 @@ public class jdbcTest {
             }
         }
         catch(Exception e){
-            System.out.println("데이터베이스 연결 실패!");
+            System.out.println(e);
         }
         finally{
             try{//rs, stmt, con 객체를 close() 메서드를 호출해 해제
