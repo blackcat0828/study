@@ -14,7 +14,7 @@ public class jdbcTest {
         String sql; //SQL문을 저장할 변수 선언
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url, "scott", "tiger" );
+            con = DriverManager.getConnection(url, "scott", "1234" );
             stmt= con.createStatement();
             //---JDBC_Select 추가된 내용 -------
             sql = "SELECT * FROM emp";
