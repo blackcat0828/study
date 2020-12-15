@@ -16,7 +16,7 @@
 	
 	<sql:setDataSource
 		var="conn"
-		driver="oracle.jdbc.driver.OracleDriver
+		driver="oracle.jdbc.driver.OracleDriver"
 		url="jdbc:oracle:thin:@localhost:1521:orcl"
 		user="sadmin"
 		password="s1234"/>
