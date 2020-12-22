@@ -103,6 +103,28 @@ public class CallableExample {
 						 System.out.println("학생이 등록되지 않았음");
 					 }
 					 
+				 }else if(menu==3) {
+					 System.out.println("학번입력: ");
+					 id = sc.next();
+					 
+					 
+					 cstmt = con.prepareCall("{call deletescore(?,?)}");
+					 cstmt.setString(1, id);
+					 
+					 
+					 //프로시저에서 선언된 out 변수처리
+					 //성적입력시 정상처리되면 0 값이
+					 //비정상처리되면 -1 값이 리턴
+					 cstmt.registerOutParameter(2, java.sql.Types.NUMERIC);
+					 cstmt.execute();
+					 
+					 //리턴값 가져오기
+					 int result = cstmt.getInt(2);
+					 if(result==0) {
+						 System.out.println("정상적으로 삭제 성공");
+					 }else {
+						 System.out.println("학생이 등록되지 않았음");
+					 }
 				 }
 				 
 			 }

@@ -155,8 +155,6 @@ public class empManageMain {
 					System.out.println("클로즈 실패 : " + e.getMessage());
 				}
 			}
-		 
-		 
 	}
 	 
 }
