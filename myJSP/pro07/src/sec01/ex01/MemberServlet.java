@@ -24,12 +24,12 @@ public class MemberServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
-			MemberDAO dao = new MemberDAO(); //SQL¹®À¸·Î Á¶È¸ÇÒ MemberDAO °´Ã¼ »ý¼º
-			List<MemberVO> list = dao.listMember(); //listMemeber()¸Þ¼­µå·Î È¸¿ø Á¤º¸ Á¶È¸
+			MemberDAO dao = new MemberDAO(); //SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ MemberDAO ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+			List<MemberVO> list = dao.listMember(); //listMemeber()ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 			
 			out.print("<html><body>");
 			out.print("<table border=1><tr align='center' bgcolor='lightgreen'>");
-			out.print("<td>¾ÆÀÌµð</td><td>ºñ¹Ð¹øÈ£</td><td>ÀÌ¸§</td><td>ÀÌ¸ÞÀÏ</td><td>°¡ÀÔÀÏ</td></tr>");
+			out.print("<td>ï¿½ï¿½ï¿½Ìµï¿½</td><td>ï¿½ï¿½Ð¹ï¿½È£</td><td>ï¿½Ì¸ï¿½</td><td>ï¿½Ì¸ï¿½ï¿½ï¿½</td><td>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</td></tr>");
 			
 			for (int i = 0; i < list.size(); i++) {
 				MemberVO memberVO = list.get(i);

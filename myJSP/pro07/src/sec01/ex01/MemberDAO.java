@@ -4,27 +4,28 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class MemberDAO {
-//	private Statement stmt; // ÀÏ¹Ý Statement »ç¿ë, ÀÏ¹Ý ¹®ÀÚ¿­ÀÌ¶ó¼­ DBMS°¡ ¿äÃ»ÀÌ ÀÖÀ»¶§¸¶´Ù ÄÄÆÄÀÏÀ» ¸Å¹ø ÇØ¾ßÇÔ.
-	private PreparedStatement pstmt; // Statement¿Í´Þ¸® ¹Ì¸® DBMS°¡ ÀÌÇØÇÒ¼ö ÀÖµµ·Ï ÄÄÆÄÀÏÇÔÀ¸·Î ¼º´É Çâ»ó.
+//	private Statement stmt; // ï¿½Ï¹ï¿½ Statement ï¿½ï¿½ï¿½, ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½Ì¶ï¿½ DBMSï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¹ï¿½ ï¿½Ø¾ï¿½ï¿½ï¿½.
+	private PreparedStatement pstmt; // Statementï¿½Í´Þ¸ï¿½ ï¿½Ì¸ï¿½ DBMSï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.
 	private Connection con;
 	 String driver="oracle.jdbc.driver.OracleDriver";
 	 String url="jdbc:oracle:thin:@localhost:1521:orcl";
 	 String user="scott";
 	 String psword="1234";
 	
-	public List<MemberVO> listMember(){
+	public List<MemberVO> listMember() throws SQLException{
 		List<MemberVO> list = new ArrayList<>();
 		try {
 			connDB();
 			String query = "select * from t_member ";
 			System.out.println(query);
 //			ResultSet rs = stmt.executeQuery(query);
-			pstmt = con.prepareStatement(query); //prepareStatement() ¸Þ¼­µå¿¡ SQLÀü´ÞÇÏ¿© PreparedStatement °´Ã¼ »ý¼º
+			pstmt = con.prepareStatement(query); //prepareStatement() ï¿½Þ¼ï¿½ï¿½å¿¡ SQLï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ PreparedStatement ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String id = rs.getString("id");
@@ -43,21 +44,21 @@ public class MemberDAO {
 			rs.close();
 			pstmt.close();
 			con.close();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return list;
 	}
 	
 	private void connDB() {
 		try {
 			Class.forName(driver);
-			System.out.println("Oracle µå¶óÀÌ¹ö ·Îµù ¼º°ø");
+			System.out.println("Oracle ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½");
 			con = DriverManager.getConnection(url, user, psword);
-			System.out.println("Connection »ý¼º ¼º°ø");
-//			stmt = con.createStatement(); ÀÏ¹Ý Statement »ý¼º½Ã
-//			System.out.println("Statement »ý¼º ¼º°ø");
+			System.out.println("Connection ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+//			stmt = con.createStatement(); ï¿½Ï¹ï¿½ Statement ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//			System.out.println("Statement ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
