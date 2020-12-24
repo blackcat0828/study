@@ -6,6 +6,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
+import oracle.jdbc.OracleTypes;
+
+
+
 public class CallableExample {
 
 	public static void main(String[] args) {
@@ -24,8 +28,7 @@ public class CallableExample {
 			 
 			 //변수 선언
 			 String id,name;
-			 int kor=0,eng=0,math=0,tot=0,rank=0;
-			 double avg=0.0;
+			 int kor=0,eng=0,math=0,tot=0,rank=0, avg=0;
 			 
 			 while(true) {
 				 System.out.println("1.성적등록 2.성적수정 3.성적삭제 4.성적리스트 5.종료");
@@ -108,7 +111,7 @@ public class CallableExample {
 					 id = sc.next();
 					 
 					 
-					 cstmt = con.prepareCall("{call deletescore(?,?)}");
+					 cstmt = con.prepareCall("{call deleteScore(?,?)}");
 					 cstmt.setString(1, id);
 					 
 					 
@@ -125,6 +128,26 @@ public class CallableExample {
 					 }else {
 						 System.out.println("학생이 등록되지 않았음");
 					 }
+				 }else if(menu==4) {
+					 cstmt = con.prepareCall("{call selectAllScore(?)}");
+					 cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+					 cstmt.executeUpdate();
+					 rs = (ResultSet)cstmt.getObject(1);
+					 System.out.printf("이름\t 국어\t 영어\t 수학\t 합계\t 평균\t 순위\n");
+					 while(rs.next()) {
+						 name = rs.getString("name");
+						 kor = rs.getInt("kor");
+						 math = rs.getInt("math");
+						 eng = rs.getInt("eng");
+						 tot = rs.getInt("tot");
+						 avg = rs.getInt("avg");
+						 rank = rs.getInt("rnk");
+						 
+					 System.out.printf("%s\t %d\t %d\t %d\t %d\t %d\t %d\n",name,kor,eng,math,tot,avg,rank);
+					 }
+				}else {
+					 System.out.println("종료합니다.");
+					 break;
 				 }
 				 
 			 }
