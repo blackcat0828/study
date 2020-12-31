@@ -1,0 +1,205 @@
+톰캣서버 다운로드 사이트
+http://tomcat.apache.org/
+톰캣 설치
+1. 설치버전
+2. 압축파일 버전
+d드라이브에 apache-tomcat-9.0.41 폴더 생성
+
+webapps - root 디렉토리
+
+jsp 작업 디렉토리 (d:드라이브에 생성)
+jspStudy
+
+jsp project 구조
+1. Java Resource - 자바프로그램 위치하는 장소
+2. WebContent - JSP 루트 디렉토리
+3. WEB-INF\lib - 프로그램에서 사용하는 library jar파일
+   예를들면 오라클 jdbc 드라이버인 ojdbc6.jar을 여기에
+   복사하면 오라클 접속
+
+MVC
+1. Model - 자바 프로그램 영역 즉 Business 영역
+2. View - 화면 구성(html,jsp등등)
+3. Controller - Model과 view 연결처리
+
+서블릿 - 자바프로그램
+
+JSP - HTML + 자바 프로그램
+
+
+<form action="member_process.jsp" method="post">
+
+   <p>아이디:<input type="text" name="id">
+   <p>비밀번호:<input type="password" name="pw">
+   <p><input type="submit">전송
+	
+</form>
+  
+    get 방식 & post 방식 비교
+
+    get                    
+   1.전송형태 
+     url에 매개변수가 key,value 형태로 url에 포함되어 전송
+   2. 전송량이 최대 4096바이트   
+   3. 속도는 post방식에 비해 빠름
+   4. 보안은 post방식에 비해 취약
+    
+    post 방식
+   1.전송형태
+     Http 헤더속에 매개변수를 감춰서 전송
+   2. 전송량 - 제한없음
+   3. 속도 : get방식에 비해 느림
+   4. 보안 : get방식에 비해 좋음
+   
+Http 응답 메시지 - 서버가 클라이언트로 결과처리를 리턴
+
+200 - 정상적으로 처리
+
+404 - 페이지 NOT FOUND
+
+500 - 서버 오류
+
+배포서술자 -> web.xml
+
+a.jsp  ->   a_jsp.java  ->  컴파일 -> a_jsp.class - > 결과값을 -> client 전송
+
+
+1.자바 설치 www.oracle.com
+2.환경변수 설정
+ 
+  1) 자바 HOME 설정
+  변수이름 : JAVA_HOME
+  변수값   : C:\Program Files\Java\jdk-11.0.9
+ 
+  2) Path 설정
+     %JAVA_HOME%\bin;
+
+
+톰캣설정
+
+64-bit Windows zip : 압축버전
+32-bit/64-bit Windows Service Installer : 설치버전
+
+JSP에서 사용되는 스크립트 태그의 종류
+
+1.선언문 태그  <%!  .... %>
+  - 자바 변수나 메서드를 선언하는데 사용
+
+2.스크립틀릿 태그 <% .... %>
+  - 자바 코드를 작성하는데 사용
+
+3.표현문 태그  <%= ... %>
+  - 변수,계산식,메서드 호출결과를 문자열 형태로 출력시 사용
+
+
+
+
+
+http://tomcat.apache.org/
+
+톰캣 기본포트 : 8080
+
+
+
+tomcat 설치 
+
+1. 압축버전 - 개발시 이클립스와 연동을 하기 위해 설치
+
+2. 설치버전 - 서버에 설치
+JSP 프로젝트를 백업처리
+
+1. export
+
+2. war - JSP프로젝트를 war형태로 톰캣 디렉토리 webapps 폴더에
+          생성하고 톰캣서비스를 start하면 해당 프로젝트의 압축이 
+          풀린다. 이렇게 되면 이클립스를 사용하지 않더라도 특정
+          url을 실행시킬 수 있다.
+
+webapps - 루트 디렉토리
+
+
+// http://localhost:8080 ? 루트 디렉토리
+//day1228 ? 프로젝트 이름(대소문자 주의)
+//CurrentTime.jsp : 실행하려는 jsp
+http://localhost:8080/day1228/CurrentTime.jsp
+
+
+src - 자바 프로그램 위치
+
+day1228.ex1
+
+ServletTest
+
+
+루트 디렉토리
+
+web.xml /sample
+
+http://localhost:8080/sample
+
+modules
+/
+
+
+web-inf - web.xml
+           - lib (오라클접속 ojdbc6.jar)
+meta-inf - context.xml
+
+WebContent - jsp 또는 resources
+ - images : 이미지 저장 폴더
+ - css : 스타일 파일 폴더
+ - js : 자바스크립트 폴더
+ - admin : 관리자용 jsp 소스 폴더
+ - member : 고객용 jsp 소스 폴더
+ - order : 주문관련 jsp 소스 폴더
+
+P68
+
+
+http://localhost:8080/ServletLifeCycle
+ 콘솔창 확인
+Constructor
+init 실행
+service 실행
+doGet 실행
+
+
+
+8080,8088 포트 중복
+1. netstat -ano | findstr 8080
+2. taskkill /F /pid pid번호
+
+
+
+이클립스 
+www.eclipse.org
+Eclipse IDE for Enterprise Java Developers
+(64비트용) - 압축버전 사용
+
+server 탭,console 탭  open
+server
+
+d:\javaStudy
+
+d:\jspStudy
+
+Webcontents
+test.jsp
+
+아이디: fitech
+비밀번호:fintech1234
+-------------------------------------------
+스크립틀릿 태그 <% .... %>
+  - 자바 코드를 작성하는데 사용
+
+표현문 태그  <%= ... %>
+  - 변수,계산식,메서드 호출결과를 문자열 형태로 출력시 사용
+
+프로그램명 : oddEvenSum.jsp
+1부터 100까지 합계 구하는데
+
+짝수합: xxx
+홀수합: xxx
+총합계: xxx
+12월 28일 까지 2.5단계
+-> 1월3일 까지 연장
