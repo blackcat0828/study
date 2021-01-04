@@ -5,29 +5,29 @@ import java.sql.Statement;
 
 public class jdbcTest {
     public static void main(String[] args) {
-        String driver = "oracle.jdbc.driver.OracleDriver";
-        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        String driver = "org.mariadb.jdbc.Driver";
+        String url = "jdbc:mariadb://jeffworld.iptime.org:33060/portfolio1";
         Connection con = null;
         Statement stmt = null ;
         //---JDBC_Select 추가된 내용 -------
         ResultSet rs = null;
-        int empno = 0;
-        String name; //데이터베이스에서 얻어온 필드값 저장할 변수 선언
+        
+        String title; //데이터베이스에서 얻어온 필드값 저장할 변수 선언
         String sql; //SQL문을 저장할 변수 선언
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url, "scott", "1234" );
+            con = DriverManager.getConnection(url, "pfuser1", "1234" );
             stmt= con.createStatement();
             //---JDBC_Select 추가된 내용 -------
-            sql = "SELECT * FROM emp";
-            System.out.printf("번호 ₩t 이름 ₩t₩t 이메일 ₩t₩t 전화번호 ₩n");
-            System.out.printf("------------------------------------------------₩n");
+            sql = "select * from book";
+            System.out.print("번호 ₩t 이름 ₩t₩t 이메일 ₩t₩t 전화번호 ₩n");
+            System.out.print("------------------------------------------------₩n");
             rs = stmt.executeQuery(sql); //얻어진 레코드를 가져옴
             while( rs.next() ){
-                empno = rs.getInt("empno");
-                name = rs.getString("ename");
+                
+                title = rs.getString("title");
 
-                System.out.println(empno +" : "+name);
+                System.out.println("title : "+title);
             }
         }
         catch(Exception e){
