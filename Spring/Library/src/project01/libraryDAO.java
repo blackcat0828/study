@@ -34,7 +34,7 @@ public class libraryDAO {
         }
     }
  
-    //데이타베이스 종료 메서드
+    //�뜲�씠��踰좎씠�뒪 醫낅즺 硫붿꽌�뱶
     public void dbClose() {
         try {
             if (rs != null) rs.close();
@@ -46,7 +46,7 @@ public class libraryDAO {
     }
  
     
-    //대여
+    //���뿬
     public int rentBook(Book book) throws ParseException {
         int result = 0;
         SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
@@ -66,7 +66,7 @@ public class libraryDAO {
             result = ps.executeUpdate();
  
         } catch (SQLException e) {
-            System.out.println("addBook() 오류" + e);
+            System.out.println("addBook() �삤瑜�" + e);
         } finally {
             dbClose();
         }
@@ -75,7 +75,7 @@ public class libraryDAO {
  
     }
  
-    //반환
+    //諛섑솚
     public int returnBook(String id){
         int result = 0;
         int intId = Integer.parseInt(id);
@@ -83,7 +83,7 @@ public class libraryDAO {
 
             ps = con.prepareStatement("update book set rent = ?, contact=?, rentDate = ? where id = ?");
             
-            ps.setString(1, "대여가능");
+            ps.setString(1, "���뿬媛��뒫");
             ps.setString(2, null);
             ps.setDate(3, null);
             ps.setInt(4, intId);
@@ -92,7 +92,7 @@ public class libraryDAO {
             result = ps.executeUpdate();
  
         } catch (SQLException e) {
-            System.out.println("addBook() 오류" + e);
+            System.out.println("addBook() �삤瑜�" + e);
         } finally {
             dbClose();
         }
@@ -101,20 +101,20 @@ public class libraryDAO {
  
     }
     
-    //책추가
+    //梨낆텛媛�
     public int addBook(String title) {
         int result = 0;
         try {
 
             ps = con.prepareStatement("insert into book (title) values(?)");
             
-            ps.setString(1, title);//문자열 읽어오기
+            ps.setString(1, title);//臾몄옄�뿴 �씫�뼱�삤湲�
             
  
-            result = ps.executeUpdate();//쿼리 반영 rowcount 리턴
+            result = ps.executeUpdate();//荑쇰━ 諛섏쁺 rowcount 由ы꽩
  
         } catch (SQLException e) {
-            System.out.println("addBook() 오류" + e);
+            System.out.println("addBook() �삤瑜�" + e);
         } finally {
             dbClose();
         }
@@ -123,7 +123,7 @@ public class libraryDAO {
  
     }
  
-    //회원 조회
+    //�쉶�썝 議고쉶
     public ObservableList<Book> bookSelectAll() {
     	
     	ObservableList<Book> list = FXCollections.observableArrayList();
@@ -163,7 +163,7 @@ public class libraryDAO {
             
             
         } catch (SQLException e) {
-            System.out.println("userSelectAll() 오류" + e);
+            System.out.println("userSelectAll() �삤瑜�" + e);
         } finally {
             dbClose();
         }
@@ -171,7 +171,7 @@ public class libraryDAO {
     	return list;
     }
 // 
-    //특정 id 삭제
+    //�듅�젙 id �궘�젣
     public int bookDelete(String id) {
         int result = 0;
         try {
@@ -189,7 +189,7 @@ public class libraryDAO {
     }
     
     
-  //검색 기능
+  //寃��깋 湲곕뒫
     public ObservableList<Book> bookSearch(String bookTitle) {
         String sql = "SELECT id, title, rent, ifnull(contact, '대여가능') as contact, "
         		+ "IFNULL(rentDate, '대여가능') as rentDate, "
@@ -235,7 +235,7 @@ public class libraryDAO {
             
             
         } catch (SQLException e) {
-            System.out.println("userSelectAll() 오류" + e);
+            System.out.println("userSelectAll() �삤瑜�" + e);
         } finally {
             dbClose();
         }
@@ -243,7 +243,7 @@ public class libraryDAO {
     	return list;
     }
 // 
-//    //회원수정
+//    //�쉶�썝�닔�젙
 //    public int userUpdate(UserJDailogGUI user) {
 //        int result = 0;
 //        String sql = "UPDATE TB_USERLIST " +
@@ -262,7 +262,7 @@ public class libraryDAO {
 //            result = ps.executeUpdate();
 // 
 //        } catch (SQLException e) {
-//            System.out.println("userUpdate() 오류:" + e);
+//            System.out.println("userUpdate() �삤瑜�:" + e);
 //        } finally {
 //            dbClose();
 //        }
@@ -270,7 +270,7 @@ public class libraryDAO {
 //        return result;
 //    }
 // 
-    //조건 검색처리
+    //議곌굔 寃��깋泥섎━
     public Book searchLastAdd() {
         String sql = "select id, title, rent, ifnull(contact, '대여가능') as contact, IFNULL(rentDate, '대여가능') as rentDate, " 
         		+"IFNULL(DATEDIFF(curDate(), rentDate), 0) as overDate from book"
@@ -300,7 +300,7 @@ public class libraryDAO {
         	book = new Book(id,title,rent,contact,rentDate,overDate);
             }
         } catch (SQLException e) {
-            System.out.println("getUserSearch() 오류:" + e.getMessage());
+            System.out.println("getUserSearch() �삤瑜�:" + e.getMessage());
         } finally {
             dbClose();
         }

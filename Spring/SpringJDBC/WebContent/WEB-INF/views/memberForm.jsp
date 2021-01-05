@@ -13,9 +13,8 @@
 <meta charset="UTF-8">
 <title>회원 등록창</title>
 <style>
-   .text_center{
-     text-align:center;
-   }
+	
+   .text_center { text-align:center; }
 </style>
 </head>
 <body>
