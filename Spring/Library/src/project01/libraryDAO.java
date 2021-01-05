@@ -34,7 +34,7 @@ public class libraryDAO {
         }
     }
  
-    //�뜲�씠��踰좎씠�뒪 醫낅즺 硫붿꽌�뱶
+    
     public void dbClose() {
         try {
             if (rs != null) rs.close();
@@ -46,7 +46,7 @@ public class libraryDAO {
     }
  
     
-    //���뿬
+    //책 대여
     public int rentBook(Book book) throws ParseException {
         int result = 0;
         SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
@@ -75,7 +75,7 @@ public class libraryDAO {
  
     }
  
-    //諛섑솚
+    //책 반환
     public int returnBook(String id){
         int result = 0;
         int intId = Integer.parseInt(id);
@@ -83,7 +83,7 @@ public class libraryDAO {
 
             ps = con.prepareStatement("update book set rent = ?, contact=?, rentDate = ? where id = ?");
             
-            ps.setString(1, "���뿬媛��뒫");
+            ps.setString(1, "대여가능");
             ps.setString(2, null);
             ps.setDate(3, null);
             ps.setInt(4, intId);
@@ -101,7 +101,7 @@ public class libraryDAO {
  
     }
     
-    //梨낆텛媛�
+    //책추가
     public int addBook(String title) {
         int result = 0;
         try {
@@ -123,7 +123,7 @@ public class libraryDAO {
  
     }
  
-    //�쉶�썝 議고쉶
+    //모든 책 리스트 반환
     public ObservableList<Book> bookSelectAll() {
     	
     	ObservableList<Book> list = FXCollections.observableArrayList();
@@ -170,8 +170,8 @@ public class libraryDAO {
     	
     	return list;
     }
-// 
-    //�듅�젙 id �궘�젣
+
+    //책 id로 해당 책 삭제
     public int bookDelete(String id) {
         int result = 0;
         try {
@@ -189,7 +189,7 @@ public class libraryDAO {
     }
     
     
-  //寃��깋 湲곕뒫
+  //책이름으로 검색
     public ObservableList<Book> bookSearch(String bookTitle) {
         String sql = "SELECT id, title, rent, ifnull(contact, '대여가능') as contact, "
         		+ "IFNULL(rentDate, '대여가능') as rentDate, "
@@ -242,35 +242,8 @@ public class libraryDAO {
     	
     	return list;
     }
-// 
-//    //�쉶�썝�닔�젙
-//    public int userUpdate(UserJDailogGUI user) {
-//        int result = 0;
-//        String sql = "UPDATE TB_USERLIST " +
-//                     "   SET NAME=?, age=? , addr=?" +
-//        		     " WHERE id=?";
-// 
-//        try {
-//        	
-//            ps = con.prepareStatement(sql);
-//
-//            ps.setString(1, user.name.getText());
-//            ps.setString(2, user.age.getText());
-//            ps.setString(3, user.addr.getText());
-//            ps.setString(4, user.id.getText().trim());
-// 
-//            result = ps.executeUpdate();
-// 
-//        } catch (SQLException e) {
-//            System.out.println("userUpdate() �삤瑜�:" + e);
-//        } finally {
-//            dbClose();
-//        }
-// 
-//        return result;
-//    }
-// 
-    //議곌굔 寃��깋泥섎━
+
+    //화면 갱신을위해 마지막에 추가된 목록 반환
     public Book searchLastAdd() {
         String sql = "select id, title, rent, ifnull(contact, '대여가능') as contact, IFNULL(rentDate, '대여가능') as rentDate, " 
         		+"IFNULL(DATEDIFF(curDate(), rentDate), 0) as overDate from book"
