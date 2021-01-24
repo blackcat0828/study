@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml">
+ <padding>
+      <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+</padding>
+   <center>
+      <GridPane hgap="10.0" vgap="10.0">
+         <children>
+            <Label text="ID" prefWidth="150" />
+            <Label text="제목" prefWidth="150" GridPane.rowIndex="1" />
+            <Label text="대여" prefWidth="150" GridPane.rowIndex="2" />
+            <Label text="연락처(대여할때만 입력)" prefWidth="150" GridPane.rowIndex="3" />
+            <Label text="" id="txtId" prefWidth="200" GridPane.columnIndex="1" />
+            <Label text="" id="txtTitle" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField id="txtRent" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="txtContact" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" spacing="20.0">
+         <BorderPane.margin>
+            <Insets top="20.0" bottom="10"/>
+         </BorderPane.margin>      
+         <children>
+            <Button id="btnRent" text="대여" />
+            <Button id="btnReturn" text="반환" />            
+            <Button id="btnDelete" text="삭제" />
+            <Button id="btnFormCancel" text="취소" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

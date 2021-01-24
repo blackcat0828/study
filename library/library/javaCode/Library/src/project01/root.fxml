@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="project01.RootController">
+	<top>
+		<HBox prefHeight="50" spacing="20">
+			<children>
+				<Label text="도서 대여 관리 프로그램" prefWidth="400" 
+				style="-fx-text-fill: blue; -fx-font-size: 30; -fx-font-weight: bold;"/>
+			</children>
+		</HBox>
+	</top>	
+	<center>
+		<TableView fx:id="tableView" prefHeight="400" prefWidth="870" >
+			<columns>
+				<TableColumn prefWidth="100" resizable="false" text="ID" />
+				<TableColumn prefWidth="150" resizable="false" text="제목" />
+				<TableColumn prefWidth="150" resizable="false" text="대여여부" />
+				<TableColumn prefWidth="150" resizable="false" text="대여인 연락처" />
+				<TableColumn prefWidth="150" resizable="false" text="대여일" />
+				<TableColumn prefWidth="150" resizable="false" text="대여 경과일" />
+			</columns>
+		</TableView>
+	</center>
+	<bottom>
+		<HBox prefHeight="50" alignment="CENTER" spacing="10">
+			<children>
+				<TextField fx:id="searchField" prefWidth="150"/>
+				<Button fx:id="btnSearch" text="검색" />
+				<Button fx:id="btnAdd" text="책 추가" />
+				<Button fx:id="btnHome" text="홈 화면" />
+				
+				<Label text="리스트를 더블 클릭하면 대여, 반환, 삭제 할수 있습니다." prefWidth="400" 
+				style="-fx-text-fill: blue; -fx-font-size: 15; -fx-font-weight: bold;"/>
+			</children>
+		</HBox>
+	</bottom>
+</BorderPane>
