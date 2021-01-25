@@ -10,13 +10,13 @@
 	<%@ include file="dbconn.jsp" %>
 	
 	<sql:update dataSource="${conn}">
-		delete from member where id = ?
-		<sql:param value="${param.id}"/>
+		delete from schedule where sdate = ?
+		<sql:param value="${param.sdate}"/>
 	</sql:update>
 
 	<script>
 		alert("정상적으로 삭제되었습니다!");
-		location.href="memberList.jsp";
+		location.href="scheduleList.jsp";
 	</script>
 </body>
 </html>

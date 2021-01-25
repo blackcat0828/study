@@ -23,11 +23,11 @@
 </head>
 <body>
 	
-	<h3>회원리스트</h3>
+	<h3>스케줄 리스트</h3>
 	<div align="left">
 		<button type="button" 
-		        class="button" onclick="location.href='joinForm.jsp'">
-			회원가입			
+		        class="button" onclick="location.href='scheduleForm.jsp'">
+			스케줄등록			
 		</button>
 		
 		<button type="button" 
@@ -43,40 +43,37 @@
 	
 	<%@ include file="dbconn.jsp"%>
 	
-	<%--select문을 실행하여 결과값을 rs에 저장 --%>
+
 	<sql:query var="rs" dataSource="${conn}">
-		select * from member order by id
+		select * from schedule order by sdate
 	</sql:query>
 	
 	<table border="1" style="border-collapse:collapse;width=600px">
 		<tr>
-			<th width="10%">아이디</th>
-			<th width="10%">비밀번호</th>
-			<th width="10%">이름</th>
-			<th width="10%">나이</th>
-			<th width="10%">성별</th>
-			<th width="10%">이메일</th>
-			<th width="20%">수정</th>
-			<th width="20%">삭제</th>
+			<th width="10%">일자</th>
+			<th width="20%">제목</th>
+			<th width="20%">내용</th>
+			<th width="20%">장소</th>
+			<th width="10%">수정</th>
+			<th width="10%">삭제</th>
 		</tr>
 		
 		<c:forEach var="row" items="${rs.rows}">
 			<tr>
-				<td><c:out value="${row.id}"/></td>
-				<td><c:out value="${row.password}"/></td>
-				<td><c:out value="${row.name}"/></td>
-				<td><c:out value="${row.age}"/></td>
-				<td><c:out value="${row.gender}"/></td>
-				<td><c:out value="${row.email}"/></td>
+				<td><c:out value="${row.sdate}"/></td>
+				<td><c:out value="${row.title}"/></td>
+				<td><c:out value="${row.content}"/></td>
+				<td><c:out value="${row.location}"/></td>
+				
 				
 				<td>
-					<a href="memberUpdate.jsp?id=<c:out value='${row.id}'/>">
+					<a href="scheduleUpdate.jsp?sdate=<c:out value='${row.sdate}'/>">
 						수정
 					</a>
 				</td>
 				
 				<td>
-					<a href="memberDelete.jsp?id=<c:out value='${row.id}'/>">
+					<a href="scheduleDelete.jsp?sdate=<c:out value='${row.sdate}'/>">
 						삭제
 					</a>
 				</td>
@@ -91,7 +88,6 @@
 
 </body>
 </html>
-
 
 
 

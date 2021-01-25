@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원관리 시스템 회원가입</title>
+<title>회원관리 시스템 회원수정</title>
 <style type="text/css">
 	table{
 		margin:auto;
@@ -32,10 +32,7 @@
 		
 	<%@ include file = "dbconn.jsp"%>	
 	
-	<%--
-	   conn 설정은 dbconn.jsp 에 있다
-	   수정하려는 회원정보를 가져오기 위해 select 수행 
-	--%>
+
 	<sql:query var="rs" dataSource="${conn}">
 		select * from member where id = ?
 		<sql:param value="${param.id}"/>
@@ -48,7 +45,7 @@
 			<table border="1">
 				<tr>
 					<td colspan="2" class="td_title">
-						회원가입 페이지
+						회원수정 페이지
 					</td>
 				</tr>
 				<tr>

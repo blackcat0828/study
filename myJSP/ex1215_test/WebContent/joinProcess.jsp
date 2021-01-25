@@ -9,8 +9,12 @@
 <body>
 
 	<%@ include file="dbconn.jsp"%>
-
-	<%-- 폼에서 입력받은 값들을 테이블에 저장 --%>
+	
+	<%
+		String id = request.getParameter("id");
+	%>
+	
+	
 	<sql:update dataSource="${conn}">
 		insert into member(id,password,name,age,gender,email,regdate) 
 		values(?,?,?,?,?,?,SYSDATE)
@@ -21,6 +25,10 @@
 		<sql:param value="${param.gender}"/>
 		<sql:param value="${param.email}"/>
 	</sql:update>
+	
+	<%
+			session.setAttribute("sessionId",id);
+	%>
 	
 	<script>
 		alert("정상적으로 저장되었습니다!");
