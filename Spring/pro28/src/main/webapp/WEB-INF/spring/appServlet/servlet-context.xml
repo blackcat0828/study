@@ -32,12 +32,12 @@
        <beans:property name="defaultEncoding" value="utf-8" />
     </beans:bean>
 
- <!--   <mvc:interceptors>
+ <mvc:interceptors>
       <mvc:interceptor>
          <mvc:mapping path="/test/*.do"/> 
 				 <mvc:mapping path="/*/*.do"/>
          <beans:bean class="com.myspring.pro28.ex05.LocaleInterceptor" />
       </mvc:interceptor>
-   </mvc:interceptors> -->
+   </mvc:interceptors>
 	
 </beans:beans>
