@@ -12,9 +12,9 @@
 		Cookie cookie = 
 		   new Cookie("language",request.getParameter("language"));
 	
-		//쿠키 유효 시간을 24시간 지정
-		cookie.setMaxAge(60*60*24);
-		//서버에서 클라이언트로 쿠키 전송
+		
+		cookie.setMaxAge(60*60*3);
+		
 		response.addCookie(cookie);
 	%>
 	

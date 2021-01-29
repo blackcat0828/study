@@ -22,10 +22,14 @@
 	<form action="jstlfmtProcess.jsp" method="post">
 		<p><fmt:message key="id"/>:
 		       <input type="text" name="id">
-		<p><fmt:message key="password"/>:
-		       <input type="password" name="passwd">
 		<p><fmt:message key="name"/>:
 		       <input type="text" name="name">
+		<p><fmt:message key="addr"/>:
+		       <input type="text" name="addr">
+		<p><fmt:message key="phone"/>:
+		       <input type="text" name="phone">
+		<p><fmt:message key="email"/>:
+		       <input type="text" name="email">              
 		<p><input type="submit"
 		      value="<fmt:message key="button"/>">		       
 	</form>
