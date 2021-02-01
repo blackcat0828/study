@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>    
+    <Resource 
+    	name="jdbc/dogTest"
+    	auth="Container"
+    	type="javax.sql.DataSource"
+    	driverClassName="oracle.jdbc.OracleDriver"
+    	url="jdbc:oracle:thin:@localhost:1521:orcl"
+    	factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+    	username="dog"
+    	password="dog1234"
+    	maxActive="500"
+    	maxWait="-1" />
+</Context>

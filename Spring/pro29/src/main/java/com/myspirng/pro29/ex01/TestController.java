@@ -31,7 +31,7 @@ public class TestController {
     MemberVO vo = new MemberVO();
     vo.setId("hong");
     vo.setPwd("1234");
-    vo.setName("ȫ�浿");
+    vo.setName("홍길동");
     vo.setEmail("hong@test.com");
     return vo;
   } 	
