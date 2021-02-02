@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,6 +48,12 @@ public class DogFrontController extends HttpServlet {
 		String command = requestURI.substring(contextPath.length());
 		Action action = null;
 		ActionForward forward = null;
+		
+		String realFolder = "";
+		String saveFolder = "/resources/images";
+		ServletContext context = request.getServletContext();
+		realFolder = context.getRealPath(saveFolder);
+		System.out.println("디렉토리"+realFolder);
 		
 		//각 요청별로 비지니스 로직 호출
 		if(command.equals("/dogList.dog")) {

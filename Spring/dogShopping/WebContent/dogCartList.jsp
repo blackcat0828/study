@@ -99,91 +99,12 @@ table {
 
 </head>
 <body>
-<c:if test="${startMoney !=null }">
-	<c:set var="startMoney" value="${startMoney }"></c:set>
-</c:if>
-<c:if test="${endMoney !=null }">
-	<c:set var="endMoney" value="${endMoney }"></c:set>
-</c:if>
 <section id="listForm">
 	<c:if test="${cartList !=null&&cartList.size()>0 }">
 	<h2>장바구니 목록</h2>
 	<form method="post">
 	<table>
-	<tr id="select">
-		<td colspan="6">
-		<select id = "startMoney" name="startMoney">
-			<option>=최하=</option>
-			<c:choose>
-				<c:when test="${startMoney==1000 }">
-					<option selected="selected">1000</option>
-					<option>2000</option>
-					<option>3000</option>
-					<option>4000</option>
-				</c:when>
-				<c:when test="${startMoney==2000 }">
-					<option>1000</option>
-					<option selected="selected">2000</option>
-					<option>3000</option>
-					<option>4000</option>
-				</c:when>
-				<c:when test="${startMoney==3000 }">
-					<option>1000</option>
-					<option>2000</option>
-					<option selected="selected">3000</option>
-					<option>4000</option>
-				</c:when>
-				<c:when test="${startMoney==4000 }">
-					<option>1000</option>
-					<option>2000</option>
-					<option>3000</option>
-					<option selected="selected">4000</option>
-				</c:when>
-				<c:otherwise>
-					<option>1000</option>
-					<option>2000</option>
-					<option>3000</option>
-					<option>4000</option>
-				</c:otherwise>
-			</c:choose> 	 	
-		</select>
-		<select id = "endMoney" name="endMoney">
-			<option>=최고=</option>
-			<c:choose>
-				<c:when test="${endMoney==1000 }">
-					<option selected="selected">1000</option>
-					<option>2000</option>
-					<option>3000</option>
-					<option>4000</option>
-				</c:when>
-				<c:when test="${endMoney==2000 }">
-					<option>1000</option>
-					<option selected="selected">2000</option>
-					<option>3000</option>
-					<option>4000</option>
-				</c:when>
-				<c:when test="${endMoney==3000 }">
-					<option>1000</option>
-					<option>2000</option>
-					<option selected="selected">3000</option>
-					<option>4000</option>
-				</c:when>
-				<c:when test="${endMoney==4000 }">
-					<option>1000</option>
-					<option>2000</option>
-					<option>3000</option>
-					<option selected="selected">4000</option>
-				</c:when>
-				<c:otherwise>
-					<option>1000</option>
-					<option>2000</option>
-					<option>3000</option>
-					<option>4000</option>
-				</c:otherwise>
-			</c:choose>
-		</select>
-		<input type="submit" value="검색" formaction="dogCartSearch.dog" />
-		</td>
+
 	</tr>
 	<tr class="tr_top">
 		<td><input type="checkbox" id="allCheck" name="allCheck" onclick="checkAll(this.form)"/></td>
