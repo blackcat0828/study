@@ -24,8 +24,25 @@ public class GlassesListAction implements Action{
 			}
 		}
 		
+		
 		GlassesListService glassesListService = new GlassesListService();
-		ArrayList<Glasses> glassesList = glassesListService.getDogList();
+		ArrayList<Glasses> glassesList = null;
+		
+		String searchType = request.getParameter("searchType");
+		
+		if(searchType!=null) {
+		if(searchType.equals("종류")){
+			String searchValue = request.getParameter("searchValue");
+			glassesList = glassesListService.getGlassesList(searchValue);
+		}else if(searchType.equals("최대가격")){
+			int searchValue = Integer.parseInt(request.getParameter("searchValue"));
+			glassesList = glassesListService.getGlassesList(searchValue);
+		}
+		}else {
+			glassesList = glassesListService.getGlassesList();
+		}
+		
+		
 		request.setAttribute("glassesList", glassesList);
 		request.setAttribute("todayImageList", todayImageList);
 		ActionForward forward = new ActionForward("glassesList.jsp", false);

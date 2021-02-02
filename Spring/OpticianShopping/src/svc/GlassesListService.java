@@ -10,12 +10,34 @@ import dao.GlassesDAO;
 import vo.Glasses;
 
 public class GlassesListService {
-	public ArrayList<Glasses> getDogList() {
-		GlassesDAO dogDAO = GlassesDAO.getInstance();
+	//전체 리스트 표시
+	public ArrayList<Glasses> getGlassesList() {
+		GlassesDAO glassesDAO = GlassesDAO.getInstance();
 		Connection con = getConnection();
-		dogDAO.setConnection(con);
-		ArrayList<Glasses> dogList = dogDAO.selectGlassesList();
+		glassesDAO.setConnection(con);
+		ArrayList<Glasses> glassesList = glassesDAO.selectGlassesList();
 		close(con);
-		return dogList;
+		return glassesList;
 	}
+	
+	//이름으로 검색
+	public ArrayList<Glasses> getGlassesList(String kind) {
+		GlassesDAO glassesDAO = GlassesDAO.getInstance();
+		Connection con = getConnection();
+		glassesDAO.setConnection(con);
+		ArrayList<Glasses> glassesList = glassesDAO.selectGlassesList(kind);
+		close(con);
+		return glassesList;
+	}
+	
+	//최대 가격으로 검색
+	public ArrayList<Glasses> getGlassesList(int endPrice) {
+		GlassesDAO glassesDAO = GlassesDAO.getInstance();
+		Connection con = getConnection();
+		glassesDAO.setConnection(con);
+		ArrayList<Glasses> glassesList = glassesDAO.selectGlassesList(endPrice);
+		close(con);
+		return glassesList;
+	}
+	
 }

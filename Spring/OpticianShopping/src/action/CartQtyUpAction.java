@@ -9,9 +9,9 @@ import vo.ActionForward;
 public class CartQtyUpAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String kind = request.getParameter("kind");
+		int id = Integer.parseInt(request.getParameter("id"));
 		GlassesCartQtyUpService glassesCartQtyUpService = new GlassesCartQtyUpService();
-		glassesCartQtyUpService.upCartQty(kind,request);
+		glassesCartQtyUpService.upCartQty(id,request);
 		ActionForward forward = new ActionForward("glassesCartList.glasses",true);
 		return forward;
 	

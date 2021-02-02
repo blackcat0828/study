@@ -65,6 +65,77 @@ public class GlassesDAO {
 		return glassesList;
 	}
 	
+	//종류로 검색
+	public ArrayList<Glasses> selectGlassesList(String kind){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<Glasses> glassesList = null;
+		try {
+			pstmt = con.prepareStatement("SELECT * FROM glasses where kind like '%?%'");
+			pstmt.setString(1, kind);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				glassesList = new ArrayList<Glasses>();
+				
+				do {
+					glassesList.add(new Glasses(
+							rs.getInt("id"),
+							rs.getString("kind"),
+							rs.getInt("price"),
+							rs.getString("image"),
+							rs.getString("brand"),
+							rs.getString("content"),
+							rs.getInt("readcount")));
+				}while(rs.next());
+				
+			}
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return glassesList;
+	}
+	
+	//최대가격
+		public ArrayList<Glasses> selectGlassesList(int endPrice){
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			ArrayList<Glasses> glassesList = null;
+			try {
+				pstmt = con.prepareStatement("SELECT * FROM glasses where price <= ?");
+				pstmt.setInt(1, endPrice);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					glassesList = new ArrayList<Glasses>();
+					
+					do {
+						glassesList.add(new Glasses(
+								rs.getInt("id"),
+								rs.getString("kind"),
+								rs.getInt("price"),
+								rs.getString("image"),
+								rs.getString("brand"),
+								rs.getString("content"),
+								rs.getInt("readcount")));
+					}while(rs.next());
+					
+				}
+				
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}
+			return glassesList;
+		}
 	
 	
 	public Glasses selectGlasses(int id) {

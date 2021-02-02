@@ -26,6 +26,7 @@ public class GlassesCartAddService {
 	public void addCart(HttpServletRequest request, Glasses cartGlasses) {
 		HttpSession session = request.getSession();
 		ArrayList<Cart> cartList = (ArrayList<Cart>)session.getAttribute("cartList");
+		String userId = (String) session.getAttribute("userId");
 		
 		if(cartList == null) {
 			cartList = new ArrayList<Cart>();
@@ -35,7 +36,7 @@ public class GlassesCartAddService {
 		boolean isNewCart = true;
 		//지금 장바구니에 담는 항목이 새로 추가되는 항목인지를 저장할 변수
 		for (int i = 0; i < cartList.size(); i++) {
-			if(cartGlasses.getKind().equals(cartList.get(i).getKind())) {
+			if(cartGlasses.getId()==cartList.get(i).getId()) {
 				isNewCart = false;
 				cartList.get(i).setQty(cartList.get(i).getQty()+1);
 				break;
@@ -45,10 +46,12 @@ public class GlassesCartAddService {
 		
 		if(isNewCart) {
 			Cart cart = new Cart();
+			cart.setId(cartGlasses.getId());
 			cart.setImage(cartGlasses.getImage());
 			cart.setKind(cartGlasses.getKind());
 			cart.setPrice(cartGlasses.getPrice());
 			cart.setQty(1);
+			cart.setCustomerId(userId);
 			cartList.add(cart);
 		}
 	}

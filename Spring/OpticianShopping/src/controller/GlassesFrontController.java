@@ -69,7 +69,7 @@ public class GlassesFrontController extends HttpServlet {
 		}
 		else if(command.equals("/glassesCartAdd.glasses")) {
 			action = new CartAddAction();
-			//프로젝트명+기능+형태(?)
+	
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {

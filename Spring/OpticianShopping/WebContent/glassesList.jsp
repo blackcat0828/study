@@ -50,17 +50,37 @@
 	}
 
 </style>
+<script>
+function check(theForm){
+		if(!theForm.searchValue.value){
+				alert("검색 값을 입력하세요.")
+				return true;
+		}else{
+			theForm.submit();
+		}
+		
+}
+</script>
+
 
 </head>
 <body>
 <section id= "listForm">
 <c:if test="${glassesList != null }">
-<h2>개 상품 목록 <a href="glassesRegistForm.glasses">개상품등록</a></h2>
+<h2>상품 목록 <a href="glassesRegistForm.glasses">상품등록</a></h2>
+<form action="glassesList.glasses" method="get">
+	<select name="searchType" id="searchType">
+			<option value="종류">종류</option>
+			<option value="최대가격">최대가격</option>
+	</select>
+	<input type="text" name="searchValue" id="searchValue" />
+	<button onclick="check(this.form)" />검색</button>
+</form>
 <table>
 	<tr>
 		<c:forEach var = "glasses" items="${glassesList }" varStatus="status">
 		<td>
-			<a href="dogView.dog?id=${glasses.id }">
+			<a href="glassesView.glasses?id=${glasses.id }">
 				<img src="resources/images/${glasses.image}" id="productImage"/>
 			</a>
 			상품명:${glasses.kind }<br>
@@ -77,12 +97,12 @@
 
 <c:if test="${glassesList==null }">
 	<div class="div_empty">
-		개 상품이 없습니다. 분양불가
+		상품이 없습니다. 상품을 등록하세요.
 	</div>
 </c:if>
 <c:if test="${todayImageList != null }">
 <div id="todayImageList">
-	<h2>오늘 본 개 상품 목록</h2>
+	<h2>오늘 상품 목록</h2>
 <table>
 	<tr>
 		<c:forEach var="todayImage" items="${todayImageList }" varStatus="status">

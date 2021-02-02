@@ -62,5 +62,6 @@ td, th {
 			<td>${sessionScope.studentList[2].getEmail()}</td>
 		</tr>
 	</table>
+	테스트 : ${studentList[0].getStudNo()}
 </body>
 </html>

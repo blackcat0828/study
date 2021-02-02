@@ -8,13 +8,13 @@ import javax.servlet.http.HttpSession;
 import vo.Cart;
 
 public class GlassesCartRemoveService {
-	public void cartRemove(HttpServletRequest request, String[] kindArray) {
+	public void cartRemove(HttpServletRequest request, int[] idArray) {
 		HttpSession session = request.getSession();
 		ArrayList<Cart> cartList = (ArrayList<Cart>)session.getAttribute("cartList");
 		
-		for (int i = 0; i < kindArray.length; i++) {
+		for (int i = 0; i < idArray.length; i++) {
 			for (int j = 0; j < cartList.size(); j++) {
-				if(cartList.get(j).getKind().equals(kindArray[i])) {
+				if(cartList.get(j).getId()==idArray[i]) {
 					cartList.remove(cartList.get(j));
 				}
 				

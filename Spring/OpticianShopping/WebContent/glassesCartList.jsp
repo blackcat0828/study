@@ -42,6 +42,7 @@ table {
 	text-align: right;
 }
 
+
 #todayImageList {
 	text-align: center;
 }
@@ -76,7 +77,8 @@ table {
 
 </style>
 <script>
-	function checkAll(theForm){
+
+function checkAll(theForm){
 		if(theForm.remove.length == undefined){
 			theForm.remove.checked = theForm.allCheck.checked;
 		}else{
@@ -89,11 +91,66 @@ table {
 		
 	}
 	
-	function checkQty(kind, qty){
-		if(qty != 1){
-			location.href="glassesCartQtyDown.glasses?kind="+kind;
+function checkConfirm(theForm){
+		var confirmed = false;	
+		
+		if(theForm.remove.length == undefined){
+			theForm.remove.checked = true;
+			theForm.action = "glassesCartRemove.glasses"
+			theForm.submit();
+			return
+		}else{
+		
+			for(var i=0;i<theForm.remove.length;i++){
+				if(theForm.remove[i].checked == true){
+					confirmed = true;
+				}	
+			}
+		}
+		
+		if(confirmed==false){
+			
+			alert("적어도 1개의 아이템을 선택해주세요.")
+		}else{
+			theForm.action = "glassesCartRemove.glasses"
+			theForm.submit();
+		}
+		
+	}
+	
+function orderConfirm(theForm){
+	var confirmed = false;	
+	
+	if(theForm.remove.length == undefined){
+		theForm.remove.checked = true;
+		theForm.action = "glassesOrder.glasses"
+		theForm.submit();
+		return
+	}else{
+	
+		for(var i=0;i<theForm.remove.length;i++){
+			if(theForm.remove[i].checked == true){
+				confirmed = true;
+			}	
 		}
 	}
+	
+	if(confirmed==false){
+		
+		alert("적어도 1개의 아이템을 선택해주세요.")
+	}else{
+		theForm.action = "glassesOrder.glasses"
+		theForm.submit();
+	}
+	
+}
+	
+function checkQty(id, qty){
+		if(qty != 1){
+			location.href="glassesCartQtyDown.glasses?id="+id;
+		}
+	}
+
 
 </script>
 
@@ -103,7 +160,7 @@ table {
 <section id="listForm">
 	<c:if test="${cartList !=null&&cartList.size()>0 }">
 	<h2>장바구니 목록</h2>
-	<form method="post">
+	<form name="listCart" method="post">
 	<table>
 	<tr class="tr_top">
 		<td><input type="checkbox" id="allCheck" name="allCheck" onclick="checkAll(this.form)"/></td>
@@ -118,7 +175,7 @@ table {
 	
 	<tr>
 		<td>
-			<input type="checkbox" id="remove" name="remove" value="${cart.kind }"/>
+			<input type="checkbox" id="remove" name="remove" value="${cart.id }"/>
 		</td>	
 		<td>
 		${status.index+1 }
@@ -134,12 +191,12 @@ table {
 			${cart.price }
 		</td>
 		<td>
-			<a href="dogCartQtyUp.dog?kind=${cart.kind }">
+			<a href="glassesCartQtyUp.glasses?id=${cart.id }">
 				<img src= "resources/images/up.jpg" id = "upImage"
 				border=0/>
 			</a><br>
 			${cart.qty }<br>
-			<a href="javascript:checkQty('${cart.kind }', ${cart.qty })">
+			<a href="javascript:checkQty('${cart.id }', ${cart.qty })">
 				<img src= "resources/images/down.jpg" id = "downImage"
 				border=0/>
 			</a>
@@ -154,7 +211,8 @@ table {
 	</tr>
 	<tr>
 		<td colspan="5" style="text-align:center;">
-			<input type="submit" value="삭제" formaction="glassesCartRemove.dog"/>
+			<input type="submit" value="주문" onclick="orderConfirm(this.form)" />
+			<input type="submit" value="선택 삭제" onclick="checkConfirm(this.form)" />
 		</td>
 	</tr>
 	</table>
@@ -162,11 +220,11 @@ table {
 	</c:if>
 	<c:if test="${cartList==null }">
 		<sction class="div_empty">
-		개정정보가 없습니다.
+		상품 정보가 없습니다.
 		</sction>
 	</c:if>
 	<nav id="commandList">
-		<a href="glassesList.dog">쇼핑 계속하기</a>
+		<a href="glassesList.glasses">쇼핑 계속하기</a>
 	</nav>
 </section>
 
