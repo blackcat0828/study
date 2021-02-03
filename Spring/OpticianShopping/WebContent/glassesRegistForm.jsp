@@ -9,7 +9,7 @@
 	#registForm{
 		width: 500px;
 		height: 600px;
-		border : 1px solid red;
+		border : 1px solid black;
 		margin:auto;
 	}
 	

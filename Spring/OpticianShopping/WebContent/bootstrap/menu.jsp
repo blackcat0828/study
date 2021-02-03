@@ -1,9 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 
+<%
+	String sessionId = (String) session.getAttribute("sessionId");
+%>
 
+<%@ include file="dbconn.jsp" %>
+
+<sql:query dataSource="${dataSource}" 
+            var="result">
+   select * from member where id = ?
+   
+   <sql:param value="${sessionId}"/>         
+
+</sql:query>
 
 <!DOCTYPE html>
 <html>
@@ -43,14 +54,14 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
 	   	 <c:choose>
-			<c:when test="${empty userId}">
-      <li><a  class="btn-lg dropdown-toggle" href="<c:url value="loginForm.member"/>"><span class="glyphicon glyphicon-user"></span>로그인</a></li>
+			<c:when test="${empty sessionId}">
+      <li><a  class="btn-lg dropdown-toggle" href="<c:url value="#"/>"><span class="glyphicon glyphicon-user"></span>로그인</a></li>
       <li><a  class="btn-lg dropdown-toggle" href="<c:url value="#"/>"><span class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
 				
 			</c:when>
-			<c:when test="${userId == 'admin'}">
+			<c:when test="${sessionId == 'admin'}">
 				<li style="padding-top:8px; color:white;font-size:22px">
-				[${userId}님]</li>
+				<c:forEach var="row" items="${result.rows}">[<c:out value="${row.name}"/></c:forEach>님]</li>
 				
 				
 				
@@ -60,15 +71,14 @@
 		              <li class="list-group-item"><a href="<c:url value="/addProduct.jsp"/>">상품 등록</a></li>		              
 		              <li class="list-group-item"><a href="<c:url value="/editProduct.jsp?edit=update"/>">상품 수정</a></li>
 		              <li class="list-group-item"><a href="<c:url value="/editProduct.jsp?edit=delete"/>">상품 삭제</a></li>
-			          <li class="list-group-item"><a href="<c:url value="logout.member"/>">로그아웃 </a></li>
+			          <li class="list-group-item"><a href="<c:url value="logoutMember.jsp"/>">로그아웃 </a></li>
 				      <li class="list-group-item"><a href="<c:url value="/member/updateMember.jsp"/>">회원 수정</a></li>
 			        </ul>
 			      </li>  
 			</c:when>
-			<c:when test="${userId != 'admin'}">
-				<li style="padding-top:8px; color:white;font-size:22px">
-				[${userId}님]</li>
-				<li style="font-weight:bold" class="nav-item"><a class="btn-lg nav-link" href="<c:url value="logout.member"/>">로그아웃 </a></li>
+			<c:when test="${sessionId != 'admin'}">
+				<li style="padding-top:8px; color:white;font-size:22px"><c:forEach var="row" items="${result.rows}">[<c:out value="${row.name}"/></c:forEach>님]</li>
+				<li style="font-weight:bold" class="nav-item"><a class="btn-lg nav-link" href="<c:url value="logoutMember.jsp"/>">로그아웃 </a></li>
 				<li style="font-weight:bold" class="nav-item"><a class="btn-lg nav-link" href="<c:url value="/member/updateMember.jsp"/>">회원 수정</a></li>
 			</c:when>	
 		 </c:choose>

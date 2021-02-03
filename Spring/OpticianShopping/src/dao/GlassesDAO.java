@@ -71,7 +71,7 @@ public class GlassesDAO {
 		ResultSet rs = null;
 		ArrayList<Glasses> glassesList = null;
 		try {
-			pstmt = con.prepareStatement("SELECT * FROM glasses where kind like '%?%'");
+			pstmt = con.prepareStatement("SELECT * FROM glasses where kind like '%' || ? || '%'");
 			pstmt.setString(1, kind);
 			rs = pstmt.executeQuery();
 			
@@ -213,6 +213,33 @@ public class GlassesDAO {
 		}
 		
 		return insertCount;
+	}
+	
+	public int checkMember(String id, String password) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		System.out.println("책맴버 id : "+ id);
+		System.out.println("책맴버 pass : "+ password);
+		
+		try {
+			pstmt = con.prepareStatement("SELECT count(id) as id FROM MEMBER WHERE id = ? AND password = ?");
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			result = rs.getInt("id");
+			}
+			System.out.println("리절트값 테스트"+result);
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		
+		return result;
 	}
 
 }

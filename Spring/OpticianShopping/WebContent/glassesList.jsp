@@ -13,7 +13,6 @@
 	#listForm{
 		width:700px;
 		height:500px;
-		border:1px solid red;
 		margin:auto;
 	}
 	
@@ -35,6 +34,7 @@
 	
 	#todayImageList{
 		text-align: center;
+		margin: auto;
 	}
 	
 	#productImage{
@@ -65,6 +65,9 @@ function check(theForm){
 
 </head>
 <body>
+<header>
+<%@ include file="header.jsp" %>
+</header>
 <section id= "listForm">
 <c:if test="${glassesList != null }">
 <h2>상품 목록 <a href="glassesRegistForm.glasses">상품등록</a></h2>
@@ -83,6 +86,7 @@ function check(theForm){
 			<a href="glassesView.glasses?id=${glasses.id }">
 				<img src="resources/images/${glasses.image}" id="productImage"/>
 			</a>
+			<br>
 			상품명:${glasses.kind }<br>
 			가격:${glasses.price }<br>
 		</td>
@@ -119,5 +123,9 @@ function check(theForm){
 </div>
 </c:if>
 </section>
+<footer>
+<%@ include file="footer.jsp" %>
+${userId }
+</footer>
 </body>
 </html>

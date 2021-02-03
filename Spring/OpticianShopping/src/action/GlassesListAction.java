@@ -13,6 +13,8 @@ import vo.Glasses;
 public class GlassesListAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+		
 		ArrayList<String> todayImageList = new ArrayList<String>();
 		Cookie[] cookieArray = request.getCookies();
 		

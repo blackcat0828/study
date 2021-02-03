@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-&copy; 한국기술직업전문학교 all rights reserved
+<hr>
+&copy; 김동민(JSP 포트폴리오) all rights reserved
 </body>
 </html>

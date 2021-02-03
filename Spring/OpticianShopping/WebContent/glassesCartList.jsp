@@ -95,10 +95,11 @@ function checkConfirm(theForm){
 		var confirmed = false;	
 		
 		if(theForm.remove.length == undefined){
-			theForm.remove.checked = true;
+			if(theForm.remove.checked == true){
 			theForm.action = "glassesCartRemove.glasses"
 			theForm.submit();
 			return
+			}
 		}else{
 		
 			for(var i=0;i<theForm.remove.length;i++){

@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script>
-window.location.href = 'glassesList.glasses';
-</script>
+	<%
+		session.invalidate();
+		response.sendRedirect("glassesList.glasses");
+	%>
 </body>
 </html>

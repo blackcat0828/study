@@ -22,6 +22,7 @@ import action.GlassesRegistFormAction;
 import action.GlassesViewAction;
 import vo.ActionForward;
 
+//안경 상품 관련 컨트롤러
 @WebServlet("*.glasses")
 public class GlassesFrontController extends HttpServlet {
        

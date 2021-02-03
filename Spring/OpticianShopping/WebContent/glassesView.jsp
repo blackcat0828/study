@@ -10,7 +10,6 @@
 <style type="text/css">
 	#listForm{
 		width:640px;
-		border:1px solid red;
 		margin:auto;
 	}
 	
