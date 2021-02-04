@@ -15,14 +15,28 @@ public class GlassesListAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		
+		ArrayList<String> newArray = new ArrayList<>();
 		ArrayList<String> todayImageList = new ArrayList<String>();
 		Cookie[] cookieArray = request.getCookies();
+		
+
 		
 		if(cookieArray != null) {
 			for (int i = 0; i < cookieArray.length; i++) {
 				if(cookieArray[i].getName().startsWith("today")) {
-					todayImageList.add(cookieArray[i].getValue());
+					newArray.add(cookieArray[i].getValue());
 				}
+			}
+		}
+		
+		//최근 쿠키 목록 5개만 가져옴
+		if(newArray.size()>5) {
+			for(int i = newArray.size()-1; i>=newArray.size()-5; i--) {
+				todayImageList.add(newArray.get(i));
+			}
+		}else {
+			for(int i = newArray.size()-1; i >= 0; i--) {
+				todayImageList.add(newArray.get(i));
 			}
 		}
 		

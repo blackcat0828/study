@@ -11,8 +11,6 @@ public class GlassesCartSearchService {
 	
 	public ArrayList<Cart> getCartSearchList (int start_money, int end_money, HttpServletRequest request){
 		HttpSession session = request.getSession();
-		System.out.println("체크 스타트 서비스"+start_money);
-		System.out.println("체크 앤드 서비스"+end_money);
 		ArrayList<Cart> oldCartList = (ArrayList<Cart>)session.getAttribute("cartList");
 		ArrayList<Cart> cartList = new ArrayList<Cart>();
 		

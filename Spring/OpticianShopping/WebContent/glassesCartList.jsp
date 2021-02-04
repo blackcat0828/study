@@ -16,7 +16,6 @@
 <style type="text/css">
 #listForm{
 	width: 640px;
-	border: 1px red solid;
 	margin: auto;
 }
 
@@ -29,9 +28,7 @@ table {
 	margin: auto;
 }
 
-.tr_top {
-	background-color: lime;
-}	
+
 
 .div_empty {
 	text-align: center;
@@ -157,13 +154,13 @@ function checkQty(id, qty){
 
 </head>
 <body>
-
+<%@ include file="header.jsp" %>
 <section id="listForm">
 	<c:if test="${cartList !=null&&cartList.size()>0 }">
 	<h2>장바구니 목록</h2>
 	<form name="listCart" method="post">
-	<table>
-	<tr class="tr_top">
+	<table class="table table_bordered table-striped">
+	<tr class="info">
 		<td><input type="checkbox" id="allCheck" name="allCheck" onclick="checkAll(this.form)"/></td>
 		<td>번호</td>
 		<td>상품이미지</td>
@@ -206,12 +203,12 @@ function checkQty(id, qty){
 	</c:forEach>
 	
 	<tr>
-		<td colspan="5" style="text-align:center;">
+		<td colspan="6" style="text-align:center;">
 			총 금액 : ${totalMoney }원
 		</td>
 	</tr>
 	<tr>
-		<td colspan="5" style="text-align:center;">
+		<td colspan="6" style="text-align:center;">
 			<input type="submit" value="주문" onclick="orderConfirm(this.form)" />
 			<input type="submit" value="선택 삭제" onclick="checkConfirm(this.form)" />
 		</td>

@@ -6,71 +6,56 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 	#listForm{
 		width:640px;
 		margin:auto;
+		
 	}
+	
+	body { 
+		padding-bottom: 70px;
+		padding-top: 70px;
+	 }
 	
 	h2 {
 		text-align:center;
 	}
-	
-	img {
-		width: 280px;
-		height: 280px;
-		border: none;
-	}
-	
-	#content_main{
-		height:300px;
-	}
-	
-	#content_left{
-		width:300px;
-		float:left;
-	}
-	
-	#content_right{
-		width: 340px;
-		float:left;
-	}
-	
-	#commandList{
-		text-align: center;
-	}
-	
-	#desc{
-		height:170px;
-		background: skyblue;
-	}
+
 
 </style>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <section id = "listForm">
-<h2>${glasses.kind }의 상세정보</h2>
-	<section id="content_main">
-		<section id = "content_left">
-			<img src="resources/images/${glasses.image }" />
-		</section>
-	<section id = "content_right">
-		<b>품종: </b> ${glasses.kind }<br>
-		<b>가격: </b> ${glasses.price }<br>
-		<b>브랜드: </b> ${glasses.brand }<br>
-		<p id="desc">
-		<b>내용 : </b> ${glasses.content }<br>
-		</p>
-	</section>
-	<div style="clear:both"></div>
-	<nav id = "commandList">
-		<a href="glassesList.glasses">쇼핑계속하기</a>
-	<c:if test="${userId !=null }">
-		<a href="glassesCartAdd.glasses?id=${glasses.id }">장바구니에담기</a>
-	</c:if>
-	</nav>
-	</section>
+	<div class="col-xs-8 col-md-10">
+		    <div class="thumbnail">
+		      <h2>${glasses.kind }의 상세정보</h2>
+		      <img src="resources/images/${glasses.image}" alt="image" style="min-height:300px;height:300px;width:100%;"  >
+		      <div class="caption">
+		        <h3>${glasses.kind }</h3>
+		        <b>가격:</b>${glasses.price }<br>
+		        <b>브랜드:</b>${glasses.brand }<br>
+		        <b>설명:</b>${glasses.content }<br><br>
+		        <a href="glassesList.glasses" class="btn btn-primary" role="button">쇼핑계속하기</a>
+		        <c:if test="${userId !=null }">
+		        <a href="glassesCartAdd.glasses?id=${glasses.id }" class="btn btn-primary" role="button">장바구니에담기</a>
+		        </c:if>
+		        <c:if test="${userId == 'admin' }">
+		        <a href="glassesUpdateForm.glasses?id=${glasses.id }" class="btn btn-primary" role="button">상품 수정</a>
+		        <a href="glassesDelete.glasses?id=${glasses.id }" class="btn btn-primary" role="button">상품 삭제</a>
+		        </c:if>
+		      </div>
+		    </div>
+		  </div>
+	
 </section>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

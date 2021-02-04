@@ -215,12 +215,56 @@ public class GlassesDAO {
 		return insertCount;
 	}
 	
+	public int updateGlasses(Glasses glasses) {
+		PreparedStatement pstmt = null;
+		int updateCount = 0;
+		String sql = "";
+
+		
+		try {
+			sql = " UPDATE glasses SET KIND = ?, PRICE=?, IMAGE = ?, BRAND=?, CONTENT=? WHERE id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, glasses.getKind());
+			pstmt.setInt(2, glasses.getPrice());
+			pstmt.setString(3, glasses.getImage());
+			pstmt.setString(4, glasses.getBrand());
+			pstmt.setString(5, glasses.getContent());
+			pstmt.setInt(6, glasses.getId());
+			updateCount = pstmt.executeUpdate();
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return updateCount;
+	}
+	
+	public int deleteGlasses(int id) {
+		PreparedStatement pstmt = null;
+	
+		int deleteCount = 0;
+		
+		try {
+			pstmt = con.prepareStatement("DELETE glasses WHERE id =?");
+			pstmt.setInt(1, id);
+			deleteCount = pstmt.executeUpdate();
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return deleteCount;
+	}
+	
 	public int checkMember(String id, String password) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
-		System.out.println("책맴버 id : "+ id);
-		System.out.println("책맴버 pass : "+ password);
 		
 		try {
 			pstmt = con.prepareStatement("SELECT count(id) as id FROM MEMBER WHERE id = ? AND password = ?");
@@ -230,7 +274,7 @@ public class GlassesDAO {
 			if(rs.next()) {
 			result = rs.getInt("id");
 			}
-			System.out.println("리절트값 테스트"+result);
+		
 			
 		}catch (SQLException e) {
 			e.printStackTrace();

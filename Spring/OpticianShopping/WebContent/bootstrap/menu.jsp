@@ -34,6 +34,7 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">핀테크 쇼핑몰</a>
     </div>
+    
     <ul class="nav navbar-nav ml-auto">
       <li class="active"><a href="welcome.jsp">Home</a></li>
       <li class="dropdown"><a class="btn-lg dropdown-toggle" data-toggle="dropdown" href="#">공지사항<span class="caret"></span></a>
@@ -48,10 +49,8 @@
           <li class="list-group-item"><a href="<c:url value="/products.jsp"/>">상품목록</a></li>
         </ul>
       </li>    
-      
-      
-                  
     </ul>
+    
     <ul class="nav navbar-nav navbar-right">
 	   	 <c:choose>
 			<c:when test="${empty sessionId}">

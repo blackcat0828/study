@@ -8,11 +8,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+	body { 
+		padding-bottom: 70px;
+		padding-top: 70px;
+	 }
+	
 	#listForm{
-		width:700px;
-		height:500px;
+		width:1000px;
+
 		margin:auto;
 	}
 	
@@ -22,7 +32,7 @@
 	
 	table{
 		margin:auto;
-		width:550px;
+		width:1000px;
 	}
 	
 	.div_empty{
@@ -48,6 +58,9 @@
 		height: 100px;
 		border: none;
 	}
+	
+	.floating { position: fixed; right: 45%; top: 180px; margin-right: -720px; text-align:center; width: 200px; }
+
 
 </style>
 <script>
@@ -65,38 +78,44 @@ function check(theForm){
 
 </head>
 <body>
-<header>
+
 <%@ include file="header.jsp" %>
-</header>
+
 <section id= "listForm">
 <c:if test="${glassesList != null }">
-<h2>상품 목록 <a href="glassesRegistForm.glasses">상품등록</a></h2>
-<form action="glassesList.glasses" method="get">
-	<select name="searchType" id="searchType">
+<div class="jumbotron">
+<h2>상품 목록 </h2>
+</div>
+
+<form class="form-inline" action="glassesList.glasses" method="get">
+	<select class="form-control" name="searchType" id="searchType">
 			<option value="종류">종류</option>
 			<option value="최대가격">최대가격</option>
 	</select>
-	<input type="text" name="searchValue" id="searchValue" />
-	<button onclick="check(this.form)" />검색</button>
+	<input class="form-control mr-sm-2" type="text" name="searchValue" id="searchValue" placeholder="검색" />
+	<button class="btn btn-success" onclick="check(this.form)" />검색</button>
 </form>
-<table>
-	<tr>
+<br>
+	<div class="row">
 		<c:forEach var = "glasses" items="${glassesList }" varStatus="status">
-		<td>
-			<a href="glassesView.glasses?id=${glasses.id }">
-				<img src="resources/images/${glasses.image}" id="productImage"/>
-			</a>
-			<br>
-			상품명:${glasses.kind }<br>
-			가격:${glasses.price }<br>
-		</td>
-		<c:if test="${((status.index+1) mod 4)==0 }">
-	</tr>
-	<tr>
-		</c:if>
+		
+		<!-- <div class="row"> -->
+		  <div class="col-xs-6 col-md-3">
+		    <div class="thumbnail">
+		      <img src="resources/images/${glasses.image}" alt="image" style="min-height:180px;height:180px;width:100%;"  >
+		      <div class="caption">
+		        <h3>${glasses.kind }</h3>
+		        <p>가격:${glasses.price }</p>
+		        <p><a href="glassesView.glasses?id=${glasses.id }" class="btn btn-primary" role="button">상세정보</a></p>
+		      </div>
+		    </div>
+		  </div>
+		<!-- </div> -->
+<%-- 		<c:if test="${((status.index+1) mod 4)==0 }">
+		<br>
+		</c:if> --%>
 		</c:forEach>	
-	</tr>
-</table>
+	</div>
 </c:if>
 
 <c:if test="${glassesList==null }">
@@ -104,28 +123,28 @@ function check(theForm){
 		상품이 없습니다. 상품을 등록하세요.
 	</div>
 </c:if>
-<c:if test="${todayImageList != null }">
-<div id="todayImageList">
-	<h2>오늘 상품 목록</h2>
-<table>
-	<tr>
+</section>
+
+
+<c:if test="${todayImageList[0] != null }">
+<div class="floating">
+<h3>최근 본 상품 목록</h3>
+
 		<c:forEach var="todayImage" items="${todayImageList }" varStatus="status">
-		<td>
+	
 			<img src="resources/images/${todayImage }" id="todayImage" />
-		</td>
+	
 			<c:if test="${((status.index+1) mod 4)==0 }">
-			</tr>
-			<tr>
+
 		</c:if>
 		</c:forEach>
-	</tr>
-</table>
+
+
 </div>
 </c:if>
-</section>
+
 <footer>
 <%@ include file="footer.jsp" %>
-${userId }
 </footer>
 </body>
 </html>

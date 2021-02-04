@@ -24,15 +24,16 @@ public class GlassesRegistAction implements Action{
 		String realFolder = "";
 		String saveFolder = "/resources/images";
 		String encType = "UTF-8";
-		int maxSize = 5*1024*1024;
+		int maxSize = 20*1024*1024;
 		//한번에 업로드 할수 있는 파일 크기
 		
 		ServletContext context = request.getServletContext();
 		realFolder = context.getRealPath(saveFolder);
-		System.out.println(realFolder);
 		MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, 
 				new DefaultFileRenamePolicy());
 		String image = multi.getFilesystemName("image");
+		
+		System.out.println("멀티파트테스트" + multi.getContentType("image"));
 		Glasses glasses = new Glasses(0, 
 						multi.getParameter("kind"),
 						Integer.parseInt(multi.getParameter("price")),

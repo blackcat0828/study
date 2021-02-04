@@ -16,9 +16,12 @@ import action.CartQtyDownAction;
 import action.CartQtyUpAction;
 import action.CartRemoveAction;
 import action.CartSearchAction;
+import action.GlassesDeleteAction;
 import action.GlassesListAction;
 import action.GlassesRegistAction;
 import action.GlassesRegistFormAction;
+import action.GlassesUpdateAction;
+import action.GlassesUpdateFormAction;
 import action.GlassesViewAction;
 import vo.ActionForward;
 
@@ -52,7 +55,6 @@ public class GlassesFrontController extends HttpServlet {
 		//각 요청별로 비지니스 로직 호출
 		if(command.equals("/glassesList.glasses")) {
 			action = new GlassesListAction();
-			//프로젝트명+기능+형태(?)
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {
@@ -61,7 +63,6 @@ public class GlassesFrontController extends HttpServlet {
 		}
 		else if(command.equals("/glassesView.glasses")) {
 			action = new GlassesViewAction();
-			//프로젝트명+기능+형태(?)
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {
@@ -79,7 +80,6 @@ public class GlassesFrontController extends HttpServlet {
 		}
 		else if(command.equals("/glassesCartList.glasses")) {
 			action = new CartListAction();
-			//프로젝트명+기능+형태(?)
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {
@@ -89,7 +89,6 @@ public class GlassesFrontController extends HttpServlet {
 		else if(command.equals("/glassesCartSearch.glasses")) {
 	
 			action = new CartSearchAction();
-			//프로젝트명+기능+형태(?)
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {
@@ -98,7 +97,6 @@ public class GlassesFrontController extends HttpServlet {
 		}
 		else if(command.equals("/glassesCartRemove.glasses")) {
 			action = new CartRemoveAction();
-			//프로젝트명+기능+형태(?)
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {
@@ -107,7 +105,6 @@ public class GlassesFrontController extends HttpServlet {
 		}
 		else if(command.equals("/glassesCartQtyUp.glasses")) {
 			action = new CartQtyUpAction();
-			//프로젝트명+기능+형태(?)
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {
@@ -116,7 +113,6 @@ public class GlassesFrontController extends HttpServlet {
 		}
 		else if(command.equals("/glassesCartQtyDown.glasses")) {
 			action = new CartQtyDownAction();
-			//프로젝트명+기능+형태(?)
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {
@@ -125,7 +121,6 @@ public class GlassesFrontController extends HttpServlet {
 		}
 		else if(command.equals("/glassesRegist.glasses")) {
 			action = new GlassesRegistAction();
-			//프로젝트명+기능+형태(?)
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {
@@ -134,7 +129,27 @@ public class GlassesFrontController extends HttpServlet {
 		}
 		else if(command.equals("/glassesRegistForm.glasses")) {
 			action = new GlassesRegistFormAction();
-			//프로젝트명+기능+형태(?)
+			try {
+				forward = action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(command.equals("/glassesUpdateForm.glasses")) {
+			action = new GlassesUpdateFormAction();
+			try {
+				forward = action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(command.equals("/glassesUpdate.glasses")) {
+			action = new GlassesUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(command.equals("/glassesDelete.glasses")) {
+			action = new GlassesDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {

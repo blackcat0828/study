@@ -4,12 +4,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+	body { 
+		padding-bottom: 70px;
+		padding-top: 70px;
+	 }
 	#registForm{
 		width: 500px;
 		height: 600px;
-		border : 1px solid black;
 		margin:auto;
 	}
 	
@@ -21,16 +29,7 @@
 		margin:auto;
 		width: 450px;
 	}
-	
-	.td_left {
-		width: 300px;
-		background:skybule;
-	}
-	
-	.td_right {
-		width:300px;
-		background:skyblue;
-	}
+
 	
 	#commandCell{
 		text-align: center;
@@ -39,72 +38,48 @@
 
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <section id = "registForm">
 	<header>
 		<h2>상품 정보등록</h2>
 	</header>
-	<form action="glassesRegist.glasses" method="post" name = "writeForm" enctype="multipart/form-data">
-	<table>
-	<tr>
-		<td colspan="2">
-			<a href="glassesList.glasses">목록보기</a>
-		</td>
-	</tr>
-	<tr>
-		<td class = "td_left">
+	<form class="form-group" action="glassesRegist.glasses" method="post" name = "writeForm" enctype="multipart/form-data">
+	
+	<div class="form-group">
 			<label for = "kind">종류 : </label>
-		</td>
-		<td class="td_right">
-			<input type = "text" name = "kind" id = "kind" required="required" />
-		</td>
-	</tr>
+			<input type = "text" class="form-control" name = "kind" id = "kind" required="required" />
+	</div>
 	
 	
-	<tr>
-		<td class = "td_left">
+	<div class="form-group">
 			<label for = "price">가격 : </label>
-		</td>
-		<td class="td_right">
-			<input type = "text" name = "price" id = "price" />
-		</td>
-	</tr>
+			<input type = "text" class="form-control" name = "price" id = "price" />
+	</div>
 	
 	
-	<tr>
-		<td class = "td_left">
+	<div class="form-group">
 			<label for = "brand">브랜드 : </label>
-		</td>
-		<td class="td_right">
-			<input type = "text" name = "brand" id = "brand" />
-		</td>
-	</tr>	
+			<input type = "text" class="form-control" name = "brand" id = "brand" />
+	</div>	
 	
-	<tr>
-		<td class = "td_left">
+	<div class="form-group">	
 			<label for = "content">글내용 : </label>
-		</td>
-		<td class="td_right">
-			<textarea name="content" id="content" rows="13" cols="40" wrap="off"></textarea>
-		</td>
-	</tr>	
+			<textarea name="content" class="form-control" id="content" rows="13" cols="40" wrap="off"></textarea>
+	</div>	
 	
-	<tr>
-		<td class = "td_left">
+	<div class="form-group">
 			<label for = "image">상품이미지 : </label>
-		</td>
-		<td class="td_right">
-			<input type = "file" name = "image" id = "image" />
-		</td>
-	</tr>		
-	<tr>
-		<td colspan="2" id="commandCell">
-			<input type = "submit" value = "상품등록" />
-			<input type = "reset" value="다시작성" />
-			<input type = "button" value = "상품목록보기" onClick="window.location.href='glassesList.glasses'"/>
-		</td>
-	</table>
+			<input type = "file"  name = "image" id = "image" />
+	</div>
+	<div class="form-group">
+			<button type="submit" class="btn btn-default">상품등록</button>
+			<button type="reset" class="btn btn-default">다시작성</button>
+			
+			
+	</div>
 	</form>
 	
 </section>
+<%@ include file="footer.jsp" %>
 </body>
 </html>
