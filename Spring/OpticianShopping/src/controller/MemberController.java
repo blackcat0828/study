@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.AddMemberAction;
+import action.AddMemberFormAction;
 import action.LoginAction;
 import action.LoginFormAction;
 import action.LogoutAction;
@@ -59,8 +61,21 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}	
 		}else if(command.equals("/logout.member")) {
-			System.out.println("로그아웃컨트롤");
 			action = new LogoutAction();
+			try {
+				forward = action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(command.equals("/addMemberForm.member")) {
+			action = new AddMemberFormAction();
+			try {
+				forward = action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(command.equals("/addMember.member")) {
+			action = new AddMemberAction();
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {

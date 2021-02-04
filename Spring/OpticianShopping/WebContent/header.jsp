@@ -37,7 +37,7 @@
 	   	 <c:choose>
 			<c:when test="${empty userId}">
       <li><a  class="btn-lg dropdown-toggle" href="<c:url value="loginForm.member"/>"><span class="glyphicon glyphicon-user"></span>로그인</a></li>
-      <li><a  class="btn-lg dropdown-toggle" href="<c:url value="#"/>"><span class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
+      <li><a  class="btn-lg dropdown-toggle" href="<c:url value="addMemberForm.member"/>"><span class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
 				
 			</c:when>
 			<c:when test="${userId == 'admin'}">

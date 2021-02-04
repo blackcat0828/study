@@ -28,7 +28,7 @@ import vo.ActionForward;
 //안경 상품 관련 컨트롤러
 @WebServlet("*.glasses")
 public class GlassesFrontController extends HttpServlet {
-       
+	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
