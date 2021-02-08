@@ -12,9 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.AddMemberAction;
 import action.AddMemberFormAction;
+import action.DeleteMemberAction;
 import action.LoginAction;
 import action.LoginFormAction;
 import action.LogoutAction;
+import action.UpdateMemberAction;
+import action.UpdateMemberFormAction;
 import vo.ActionForward;
 
 //맴버 관리 관련 컨트롤러
@@ -81,8 +84,28 @@ public class MemberController extends HttpServlet {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}	
+		}else if(command.equals("/updateMemberForm.member")) {
+			action = new UpdateMemberFormAction();
+			try {
+				forward = action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(command.equals("/updateMember.member")) {
+			action = new UpdateMemberAction();
+			try {
+				forward = action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}else if(command.equals("/deleteMember.member")) {
+			action = new DeleteMemberAction();
+			try {
+				forward = action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}	
 		}
-
 		
 		if(forward !=null) {
 			if(forward.isRedirect()) {
@@ -96,3 +119,4 @@ public class MemberController extends HttpServlet {
 	}
 
 }
+

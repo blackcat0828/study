@@ -22,7 +22,7 @@ public class LoginAction implements Action {
 		if(rightMember) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userId",userId);
-			forward = new ActionForward("glassesList.glasses", true);
+			forward = new ActionForward("glassesList.glasses", false);
 			
 		}else {
 			response.setContentType("text/html;charset=UTF-8");

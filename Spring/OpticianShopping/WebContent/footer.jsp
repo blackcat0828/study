@@ -13,9 +13,14 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
-  <span class="navbar-text">
+<ul class="nav navbar-nav ml-auto">
+      <li class="active"><a href="shopMain.jsp">Home</a></li>
+      </li>
+</ul>  
+<span class="navbar-text">
 &copy; 김동민(JSP 포트폴리오) all rights reserved
 </span>
+
 </nav>
 </body>
 </html>

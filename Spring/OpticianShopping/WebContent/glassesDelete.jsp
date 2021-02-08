@@ -8,6 +8,7 @@
 </head>
 <body>
 <script>
+
 alert('삭제 성공');
 window.location.href = 'glassesList.glasses';
 </script>

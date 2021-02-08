@@ -9,7 +9,7 @@
 <script>
 	$(document).ready(function () {
 	   $(function () {
-	            $('.phone').keydown(function (event) {
+	            $('.contact').keydown(function (event) {
 	             var key = event.charCode || event.keyCode || 0;
 	             $text = $(this); 
 	             if (key !== 8 && key !== 9) {
@@ -29,30 +29,7 @@
 	});
 </script>
 
-<script>
-	$(function(){
-		$("#birthday").datepicker({
-			changeMonth:true,
-			changeYear:true,
-			dateFormat:"yy-mm-dd",
-			prevText:"이전 달",
-			nextText:"다음 달",
-			monthNames:['1월','2월','3월','4월',
-						'5월','6월','7월','8월',
-						'9월','10월','11월','12월'
-				       ],
-			monthNamesShort:['1월','2월','3월','4월',
-							'5월','6월','7월','8월',
-							'9월','10월','11월','12월'
-					       ],
-			dayNames:['일','월','화','수','목','금','토'],
-			dayNamesShort:['일','월','화','수','목','금','토'],
-			dayNamesMin:['일','월','화','수','목','금','토'],
-			showMonthAfterYear:true,
-			yearSuffix:'년'
-		});
-	});
-</script>
+
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -64,7 +41,7 @@
                 // 각 주소의 노출 규칙에 따라 주소를 조합한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
+             
 
                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
@@ -73,32 +50,13 @@
                     addr = data.jibunAddress;
                 }
 
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("addressName2").value = extraAddr;
-                     } else {
-                    document.getElementById("addressName2").value = '';
-                }
+ 
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('postCd').value = data.zonecode;
+                
                 document.getElementById("addressName").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("postCd").focus();
+                document.getElementById("addressName").focus();
             }
         }).open();
     }
@@ -126,15 +84,9 @@
 			return false;
 		}
 		
-		if (!document.newMember.gender.value) {
-			alert("성별을 선택하세요.");
-			return false;
-		}		
+
 		
-		if (!document.newMember.birthday.value) {
-			alert("생일을 선택하세요.");
-			return false;
-		}
+
 		
 		if (!document.newMember.phone.value) {
 			alert("휴대폰 번호를 선택하세요.");
@@ -184,7 +136,7 @@
 
 	<div class="container">
 		<form name="newMember"
-			  action="processAddMember.jsp" 
+			  action="addMember.member" 
 			  method="post" onsubmit="return checkForm()">
 			<div class="form-group  row">
 				<label for="id" class="col-sm-2 ">아이디</label>
@@ -210,63 +162,27 @@
 					<input name="name" type="text" class="form-control" placeholder="이름 입력" >
 				</div>
 			</div>
-			<div class="form-group  row">
-				<label class="col-sm-2">성별</label>
-				<div class="col-sm-10">
-					<input name="gender" type="radio" value="남" /> 남 
-					<input name="gender" type="radio" value="여" /> 여
-				</div>
-			</div>
-
-			<div class="form-group  row">
-				<label class="col-sm-2">생일</label>
-				<div class="col-sm-3">
-					<input id="birthday" name="birthday" type="text" class="form-control" placeholder="생일 입력" >
-				</div>
-			</div>
+	
 
 
-			<div class="form-group  row ">
-				<label class="col-sm-2">이메일</label>
-				<div class="col-sm-10">
-					<input type="text" name="mail1" maxlength="50">@ 
-					<select name="mail2">
-						<option>naver.com</option>
-						<option>daum.net</option>
-						<option>gmail.com</option>
-						<option>nate.com</option>
-					</select>
-				</div>				
-			</div>
 			<div class="form-group  row">
 				<label class="col-sm-2">전화번호</label>
 				<div class="col-sm-3">
-					<input class="phone" name="phone" type="text" class="form-control" placeholder="0000-0000-0000" >
+					<input class="contact" name="contact" type="text" class="form-control" placeholder="0000-0000-0000" >
 
 				</div>
 			</div>
-			<div class="form-group row">
-				<label class="col-sm-2">우편번호</label>					
-				<div class="col-sm-2"> 
-					<input id="postCd" name="postCd" type="text" 
-					       class="form-control" />
-					<input type="button" value="우편번호 찾기" onclick="Postcode()"/>       
-				</div>	
-			</div>
+
 			<div class="form-group row">
 				<label class="col-sm-2">주소</label>					
 				<div class="col-sm-5">
-					<input id="addressName" name="address" type="text" readonly="readonly"
+					<input id="addressName" name="addr" type="text" readonly="readonly"
 					       class="form-control" />
+					<input type="button" value="주소 찾기" onclick="Postcode()"/>    
 				</div>				
 			</div>
 			
-			<div class="form-group row">
-				<label class="col-sm-2">상세주소</label>					
-				<div class="col-sm-5">
-					<input id="addressName2" name="address2"  type="text"  class="form-control" />
-				</div>				
-			</div>
+
 			<div class="form-group  row">
 				<div class="col-sm-offset-2 col-sm-10 ">
 					<input type="submit" class="btn btn-primary" value="등록" > 

@@ -14,6 +14,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	body { 
+		padding-bottom: 70px;
+		padding-top: 70px;
+	 }
+
 #listForm{
 	width: 640px;
 	margin: auto;
@@ -40,9 +45,7 @@ table {
 }
 
 
-#todayImageList {
-	text-align: center;
-}
+
 
 #productImage{
 	width:150px;
@@ -158,7 +161,7 @@ function checkQty(id, qty){
 <section id="listForm">
 	<c:if test="${cartList !=null&&cartList.size()>0 }">
 	<h2>장바구니 목록</h2>
-	<form name="listCart" method="post">
+	<form name="listCart" method="post" action="addOrder.order">
 	<table class="table table_bordered table-striped">
 	<tr class="info">
 		<td><input type="checkbox" id="allCheck" name="allCheck" onclick="checkAll(this.form)"/></td>
@@ -209,22 +212,24 @@ function checkQty(id, qty){
 	</tr>
 	<tr>
 		<td colspan="6" style="text-align:center;">
-			<input type="submit" value="주문" onclick="orderConfirm(this.form)" />
+			<input type="submit" value="주문" />
 			<input type="submit" value="선택 삭제" onclick="checkConfirm(this.form)" />
 		</td>
 	</tr>
 	</table>
 	</form>
-	</c:if>
-	<c:if test="${cartList==null }">
-		<sction class="div_empty">
-		상품 정보가 없습니다.
-		</sction>
-	</c:if>
 	<nav id="commandList">
-		<a href="glassesList.glasses">쇼핑 계속하기</a>
+		<a href="glassesList.glasses" class="btn btn-primary" role="button">쇼핑계속하기</a>
 	</nav>
+	</c:if>
+	
+	<c:if test="${cartList.size()<=0 }">
+		<div>
+		상품 정보가 없습니다.
+		<a href="glassesList.glasses" class="btn btn-primary" role="button">쇼핑계속하기</a>
+		</div>
+	</c:if>
 </section>
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>

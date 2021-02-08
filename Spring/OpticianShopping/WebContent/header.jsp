@@ -21,18 +21,9 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">핀테크 쇼핑몰</a>
+      <a class="navbar-brand" href="shopMain.jsp">핀테크 쇼핑몰</a>
     </div>
-    
-    <ul class="nav navbar-nav ml-auto">
-      <li class="active"><a href="shopMain.jsp">Home</a></li>
-      <li class="dropdown"><a class="btn-lg dropdown-toggle" data-toggle="dropdown" href="#">공지사항<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li class="list-group-item"><a href="<c:url value="#"/>">게시판</a></li>
-        </ul>
-      </li>
-    </ul>  
-
+ 
     <ul class="nav navbar-nav navbar-right">
 	   	 <c:choose>
 			<c:when test="${empty userId}">
@@ -48,10 +39,8 @@
 				
 			      <li class="dropdown"><a class="btn-lg dropdown-toggle" data-toggle="dropdown" href="#">관리자용</a>
 			        <ul class="dropdown-menu">
-                      <li class="list-group-item"><a href="<c:url value="/products.jsp"/>">상품목록</a></li>
+                      <li class="list-group-item"><a href="<c:url value="/orderList.order"/>">주문 확인</a></li>
 		              <li class="list-group-item"><a href="<c:url value="glassesRegistForm.glasses"/>">상품 등록</a></li>		              
-		              <li class="list-group-item"><a href="<c:url value="/editProduct.jsp?edit=update"/>">상품 수정</a></li>
-		              <li class="list-group-item"><a href="<c:url value="/editProduct.jsp?edit=delete"/>">상품 삭제</a></li>
 			          <li class="list-group-item"><a href="<c:url value="logout.member"/>">로그아웃 </a></li>
 				      <li class="list-group-item"><a href="<c:url value="/member/updateMember.jsp"/>">회원 수정</a></li>
 			        </ul>
@@ -60,8 +49,10 @@
 			<c:when test="${userId != 'admin'}">
 				<li style="padding-top:8px; color:white;font-size:22px">
 				[${userId}님]</li>
+				<li style="font-weight:bold" class="nav-item"><a class="btn-lg nav-link" href="<c:url value="updateMemberForm.member"/>">내 정보 수정</a></li>
+				<li style="font-weight:bold" class="nav-item"><a class="btn-lg nav-link" href="<c:url value="orderList.order"/>">내 주문 확인</a></li>
 				<li style="font-weight:bold" class="nav-item"><a class="btn-lg nav-link" href="<c:url value="logout.member"/>">로그아웃 </a></li>
-				<li style="font-weight:bold" class="nav-item"><a class="btn-lg nav-link" href="<c:url value="/member/updateMember.jsp"/>">회원 수정</a></li>
+				<li style="font-weight:bold" class="nav-item"><a class="btn-lg nav-link" href="<c:url value="deleteMember.member"/>">회원 탈퇴 </a></li>
 			</c:when>	
 		 </c:choose>
     </ul>

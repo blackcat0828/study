@@ -15,7 +15,6 @@ import action.CartListAction;
 import action.CartQtyDownAction;
 import action.CartQtyUpAction;
 import action.CartRemoveAction;
-import action.CartSearchAction;
 import action.GlassesDeleteAction;
 import action.GlassesListAction;
 import action.GlassesRegistAction;
@@ -80,15 +79,6 @@ public class GlassesFrontController extends HttpServlet {
 		}
 		else if(command.equals("/glassesCartList.glasses")) {
 			action = new CartListAction();
-			try {
-				forward = action.execute(request, response);
-			}catch (Exception e) {
-				e.printStackTrace();
-			}	
-		}
-		else if(command.equals("/glassesCartSearch.glasses")) {
-	
-			action = new CartSearchAction();
 			try {
 				forward = action.execute(request, response);
 			}catch (Exception e) {
