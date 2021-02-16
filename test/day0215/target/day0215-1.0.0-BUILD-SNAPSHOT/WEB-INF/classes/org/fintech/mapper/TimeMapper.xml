@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TimeMapper interface 위치 선언 -->    
+<mapper namespace="org.fintech.mapper.TimeMapper">
+
+	<!-- 
+	   TimeMapper interface에 있는 getTime2 메서드를 실행하기
+	   위해 id를 getTime2로 선언
+	   
+	   resultType : select 문장을 실행후 리턴 결과값의 자료형
+	   
+	 -->
+	<select id="getTime2" resultType="string">
+		select sysdate from dual
+	</select>
+			
+</mapper>
+
+
+
+    

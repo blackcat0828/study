@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- HiKariCP 설정 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName"
+		          value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+		<property name="jdbcUrl"
+			 	  value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"/>
+		<property name="username" value="fadmin"/>
+		<property name="password" value="fadmin1234"/>	 	            
+	</bean>	
+	
+	<bean id="dataSource" 
+		  class="com.zaxxer.hikari.HikariDataSource" 
+		  destroy-method="close">
+		<constructor-arg ref="hikariConfig"/>
+	</bean>
+	
+	
+<!-- 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName"
+		          value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl"
+			 	  value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+		<property name="username" value="fadmin"/>
+		<property name="password" value="fadmin1234"/>	 	            
+	</bean>
+	
+	<bean id="dataSource" 
+	      class="com.zaxxer.hikari.HikariDataSource" 
+	      destroy-method="close">
+	    생성자의 매개변수 지정  
+		<constructor-arg ref="hikariConfig"/>	
+		
+	</bean> -->
+	
+	<!--
+		sqlSessionFactory?
+		데이터베이스와 연결을 위한 SQL의 실행에 대한 모든 것을 관리하는
+		가장 중요한 객체 
+	 -->
+	<bean id="sqlSessionFactory" 
+	      class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <!--  dataSource 멤버변수에 연결정보를 대입-->  
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 
+		2021.02.15 mybatis & spring 연동 처리
+		org.fintech.mapper 패키지에서
+		mybatis 관련 어노테이션을 search하여 처리 
+	-->
+	<mybatis-spring:scan base-package="org.fintech.mapper"/>
+	
+	<context:component-scan base-package="org.fintech.sample">
+	</context:component-scan>
+		
+</beans>
+
+
+
+
+
+
+
+
