@@ -42,6 +42,6 @@
 	-->
 	<mybatis-spring:scan base-package="org.fintech.mapper"/>
 	
-	<context:component-scan base-package="org.fintech.sample">
-	</context:component-scan>	
+	<!-- 2021.02.17 org.fintech.service 패키지 인식 -->
+	<context:component-scan base-package="org.fintech.service" />	
 </beans>

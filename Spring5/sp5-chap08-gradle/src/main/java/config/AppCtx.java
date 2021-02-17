@@ -21,8 +21,8 @@ public class AppCtx {
 	@Bean(destroyMethod = "close")
 	public DataSource dataSource() {
 		DataSource ds = new DataSource();
-		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost/spring5fs?characterEncoding=utf8");
+		ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		ds.setUrl("jdbc:oracle:thin:@Localhost:1521:orcl");
 		ds.setUsername("fintech");
 		ds.setPassword("fintech1234");
 		ds.setInitialSize(2);
