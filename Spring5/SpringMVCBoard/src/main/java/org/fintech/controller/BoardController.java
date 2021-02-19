@@ -27,7 +27,14 @@ public class BoardController {
 		model.addAttribute("list", service.getList());
 		return "/board/list";
 		
+}
+	
+	//게시판 등록처리를 위한 처리
+	@GetMapping("/register")
+	public String register() {
+		return "/board/register";
 	}
+	
 	
 	//RedirectAttributes?
 	//해더에 매개변수를 붙이지 않기 위해서 단한번 사용하고 소멸되는 속성을 지정할 때 사용된다.
@@ -46,9 +53,16 @@ public class BoardController {
 	
 	//특정 게시판 상세 보기
 	@GetMapping("/get")
-	public void get(@RequestParam("bno") Long bno, Model model) {
-		log.info("/board/get url 실행");
+	public String get(@RequestParam("bno") Long bno, Model model) {
 		model.addAttribute("board",service.get(bno));
+		return "board/get";
+		
+	}
+	
+	@GetMapping("/modifyForm")
+	public String modifyForm(@RequestParam("bno") Long bno, Model model) {
+		model.addAttribute("board",service.get(bno));
+		return "board/modify";
 		
 	}
 	//게시판 수정
