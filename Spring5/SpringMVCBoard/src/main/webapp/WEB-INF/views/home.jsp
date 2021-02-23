@@ -4,10 +4,16 @@
 <head>
 	<title>Home</title>
 </head>
-<script>
+
+<script type="text/javascript">
 	self.location = "/board/list";
 </script>
+
 <body>
-	
+<h1>
+	Hello world!  
+</h1>
+
+<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

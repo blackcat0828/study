@@ -21,9 +21,26 @@ import org.springframework.stereotype.Component;
 public class MemberDao {
 	private JdbcTemplate jdbcTemplate;
 
+	private RowMapper<Member> memRowMapper = 
+			new RowMapper<Member>() {
+				@Override
+				public Member mapRow(ResultSet rs, int rowNum)
+						throws SQLException {
+					Member member = new Member(rs.getString("EMAIL"),
+							rs.getString("PASSWORD"),
+							rs.getString("NAME"),
+							rs.getTimestamp("REGDATE").toLocalDateTime());
+					member.setId(rs.getLong("ID"));
+					return member;
+				}
+			};
+	
+	
 	public MemberDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+	
+	
 	
 	public Member selectByEmail(String email) {
 		List<Member> results = jdbcTemplate.query("select * from SPRINGMEMBER where EMAIL = ?", 
@@ -112,4 +129,13 @@ public class MemberDao {
 				}, from, to);
 			return results;
 	}
+	
+	public Member selectById(Long memId) {
+		List<Member> results = jdbcTemplate.query(
+				"select * from SPRINGMEMBER where ID = ?",
+				memRowMapper, memId);
+
+		return results.isEmpty() ? null : results.get(0);
+	}
+
 }

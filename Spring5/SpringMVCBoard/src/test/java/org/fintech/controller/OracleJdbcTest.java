@@ -26,8 +26,8 @@ public class OracleJdbcTest {
 	public void testConnection() {
 		try(Connection con = DriverManager.getConnection(
 				"jdbc:oracle:thin:@localhost:1521:orcl",
-				"board",
-				"board1234")){
+				"fadmin",
+				"fadmin1234")){
 			log.info(con);
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- 한글 필터 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>
@@ -23,12 +23,9 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
-	
-	
-	
-	
-	
+
+
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
@@ -48,22 +45,11 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
-		
-			<!-- servlet 3.1.0 파일 업로드 설정 -->
-		<multipart-config>
-			<location>c:\\upload\\temp</location> <!-- 업로드 위치 -->
-			<max-file-size>20971520</max-file-size> <!-- 업로드 파일의 총 크기 20M -->
-			<max-request-size>41943040</max-request-size> <!-- 한번에 업로드 할 수 있는 최대 크기 40M -->
-			<file-size-threshold>20971520</file-size-threshold>  <!-- 업로 파일의 최대크기 20M가 넘어가면 임시폴더에 저장 -->
-		</multipart-config>
 	</servlet>
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
 
-	
 </web-app>
-

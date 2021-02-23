@@ -1,4 +1,3 @@
-
         </div>
         <!-- /#page-wrapper -->
 
@@ -19,26 +18,25 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable({
-        	//반응형으로 동작을 하겠다는 선언
-        	responsive:true;
-        });
-        
-        //왼쪽 메뉴바 속성을 지정
-        $(".sidebar-nav")
-        	//부트스트랩 네비게이션바 자동 접기 옵션
-        	.attr("class","sidebar-nav navbar-collapse collapse")
-        	//모바일 크기에서 새로고침 클릭시 자동으로 메뉴가 펼쳐지는 문제를 해결
-        	.attr("aria-expanded","false")
-        	.attr("style","height:1px")
-        	
-    });
-    
-    
+	    $(document).ready(function() {
+	        $('#dataTables-example').dataTable({
+	        	//반응형으로 동작을 하겠다는 선언
+	        	responsive:true;
+	        });
+	        
+	        //왼쪽 메뉴바 속성을 지정
+	        $(".sidebar-nav")
+	           //부트스트랩 네비게이션바 자동 접기 옵션	
+	           .attr("class","sidebar-nav navbar-collapse collapse")
+	           //모바일 크기에서 새로고침 클릭시 자동으로 메뉴가 펼쳐지는 문제를
+	           //해결
+	           .attr("aria-expanded","false")
+	           .attr("style","height:1px")
+	    });
+
+	    
     </script>
 
 </body>
 
 </html>
-    

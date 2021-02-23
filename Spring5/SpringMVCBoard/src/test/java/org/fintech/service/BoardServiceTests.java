@@ -14,30 +14,33 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration(
+		"file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class BoardServiceTests {
+	
 	@Setter(onMethod_ = @Autowired)
 	private BoardService service;
 	
 	@Ignore
 	public void testExist() {
 		log.info(service);
-		//BoardService가 Null인지 여부 체크
+		//BoardService 가 null 인지 여부 체크
 		assertNotNull(service);
 	}
 	
 	@Ignore
 	public void testRegister() {
+		
 		BoardVO board = new BoardVO();
 		
-		board.setTitle("자바 교육");
-		board.setContents("상속과 추상클래스 교육");
+		board.setTitle("자바교육");
+		board.setContent("상속과 추상클래스 교육");
 		board.setWriter("이순신");
 		
 		service.register(board);
 		
-		log.info("생성된 게시판 번호: " + board.getBno());
+		log.info("생성된 게시판 번호:" + board.getBno());
 		
 	}
 	
@@ -49,22 +52,34 @@ public class BoardServiceTests {
 	
 	@Ignore
 	public void testGet() {
-		log.info(service.get(2L));
+		log.info(service.get(8L));
+	}
+	
+	//게시판 수정
+	@Ignore
+	public void testUpdate() {
+		
+		BoardVO board = service.get(11L);
+		
+		if(board == null) {
+			return;
+		}
+		
+		board.setTitle("제목을 수정합니다.");
+		log.info("수정건수:" + service.modify(board));
+		
 	}
 	
 	@Test
-	public void testModify() {
-		BoardVO board = new BoardVO();
-		board.setBno(2L);
-		board.setContents("모디파이 테스트");
-		board.setTitle("모디파이 테스트 타이틀");
-		board.setWriter("김동민");
-		log.info(service.modify(board));
+	public void testDelete() {
+		log.info("삭제건수:" + service.remove(11L));
 	}
 	
-	@Ignore
-	public void testRemove() {
-		log.info(service.remove(4L));
-	}
-	
+
 }
+
+
+
+
+
+
