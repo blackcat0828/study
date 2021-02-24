@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="org.fintech.mapper.ReplyMapper">
+
+	<!-- 
+		id는 BoardMapper interface에 있는 getList() 메서드 이름
+		resultType:select Query를 수행후 리턴되는 자료 형태를 선언 
+	-->
+<!-- 	<select id="getList" resultType="org.fintech.domain.BoardVO">
+		
+		< > & ||등을 태그로 잘못 인식하는 것을 방지
+		<![CDATA[
+			select * from tbl_board where bno > 0 order by bno desc		
+		]]>
+		
+	</select> -->
+	
+	<insert id="insert">
+		<!-- 
+			#{속성명} : 
+		 -->
+		insert into tbl_reply(rno, bno, reply, replyer)
+		     values (seq_reply.nextval, #{bno},#{reply},#{replyer})
+	</insert>
+	
+	<!-- insert후 pk 값을 알아야 하는 경우 -->
+	<insert id="insertSelectKey">
+	
+		<!-- 
+			keyProperty : 기본키(Primary Key) 지정
+			order="BEFORE" : sql문을 실행하기 전 <selectKey> 내용을
+			먼저 수행해라라는 의미
+			resultType : 리턴값의 자료형을 선언
+		 -->
+		<selectKey keyProperty = "rno" order="BEFORE" resultType="long">
+			select seq_reply.nextval from dual		
+		</selectKey>
+		
+		insert into tbl_reply(rno, bno, reply, replyer)
+		     values (#{rno}, #{bno},#{reply},#{replyer})
+	
+	</insert>
+	
+	<!-- 게시판 상세보기 -->
+	<select id="read" resultType="org.fintech.domain.ReplyVO">
+		select * from tbl_reply where rno = #{rno}
+	</select>
+	
+	<!--  게시판 삭제 처리 -->
+	<delete id="delete">
+		delete from tbl_reply where rno = #{rno}
+	</delete>
+	
+	<!-- 게시판 수정 처리 -->
+	<update id="update">
+		
+		update tbl_reply
+		   set reply = #{reply},
+		       replyer = #{replyer},
+		       updatedate = sysdate
+		 where rno = #{rno}     	
+	
+	</update>
+	
+	<!-- 페이징 처리 02.22 -->
+	<select id="getListWithPaging" 
+	        resultType="org.fintech.domain.ReplyVO">
+	        
+	        select * from tbl_reply where bno= #{bno}
+	        order by rno desc
+	        
+		   <!-- <![CDATA[
+		
+			select bno,title,content,writer,regdate,updatedate
+		      from 
+		         (
+		         	select /*+INDEX_DESC(tbl_board pk_board) */
+		         	        rownum rn,bno,title,content,writer,
+		         	        regdate,updatedate
+		         	  from tbl_board
+		         	 where
+		     ]]>
+		     
+		     <include refid="criteria"></include>
+		    
+		      
+		     <![CDATA[
+		    	 	rownum <= #{pageNum} * #{amount}
+		       	  )
+		     where rn > (#{pageNum} - 1) * #{amount}  	
+		     ]]>      -->
+	
+	</select>
+	
+	<!-- 게시물 전체 데이터수 가져오기 02.22 -->
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tbl_board where 
+			<include refid="criteria"></include>
+		 bno > 0
+	</select>
+	
+	<sql id="criteria">
+	
+		 <!--  
+		     	prefix : 요소의 내용이 있으면 가장 앞에 해당하는 문자열을 붙여준다
+		     	
+		      -->
+		 <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		     	<foreach item="type" collection="typeArr">
+		     		<trim prefix="OR">
+		     			<choose>
+		     				<when test="type == 'T'.toString()">
+		     					title like '%'||#{keyword}||'%'
+		     				</when>
+		     				<when test="type == 'C'.toString()">
+		     					content like '%'||#{keyword}||'%'
+		     				</when>
+		     				<when test="type == 'W'.toString()">
+		     					writer like '%'||#{keyword}||'%'
+		     				</when>
+		     			</choose>
+		     		</trim>
+		     	</foreach>		     
+		     </trim>
+	
+	</sql>
+
+</mapper>
+
+
+
+
