@@ -1,44 +1,170 @@
-function workout(){
-    let gym = 'Gym A';
+//프로미스
+function getProjects(){
+    return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                    resolve([{id: 1, name: 'Project A' }, { id: 2, name: 'Project B' }]);
+                }, 100);
+    });
+}
 
-    const gymStatuses = {'Gym A' : 'open', 'Gym B' : 'open', 'Gym C': 'closed'};
-    for (let gym in gymStatuses){
-        console.log(gym + ' is ' + gymStatuses[gym])
-    }
+function getTasks(projects) {
+return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                        resolve({ projects,
+                                            tasks: ['Buy three tickets', 'book a hotel'] });
+            }, 100);
+    });
+}
+function render({ projects, tasks}){
+console.log(`Render ${projects.length} projects and ${tasks.length} tasks`);
+}
 
-    {
-        const gym = 'Gym B';
-        console.log('Workout in first block ' + gym);
-        //다음은 throw TypeError를 던질 것이다.
-        // gym = 'Gym C';
-    }
+getProjects()
+    .then(getTasks)
+    .then(render)
+    .catch((error) => {
+                console.log('Handling error', error);
+});
 
-    console.log('Workout in ' + gym)
 
-    {
-        function gym(){
-            console.log('Workout in a separate gym');
-        }
-        gym();
-    }
 
-    if(gymStatuses[gym] == 'open'){
-        let exercises = ['Treadmill','Pushup','Spinning'];
-    }
+
+//콜백방식
+// function getProjects(callback){
+// 	//서버 API를 호출하는 데 setTimeout을 활용
+// 	setTimeout(() => {
+// 			callback([{id:1, name: 'Project A' }, { id:2, name: 'Project B' }]);
+// 		}, 100);
+
+// function getTasks(projects, callback){
+// 	//서버 API를 호출하는 데 setTimeout을 활용
+// 	setTimeout(() => {
+// 			//구체적인 프로젝트의 작업 반환
+// 			callback([{id: 1, projectId: 1, title: 'Task A' },
+// 								{ id: 2, projectId: 2, title: 'Task B' }]);
+// 		}, 100);
+// }
+// function render({ projects, tasks }){
+// 		console.log(`Render ${projects.length} projects and ${tasks.length} tasks`);
+// }
+
+// getProjects((projects) => {
+// 			getTasks(projects, (tasks) => {
+// 			render({projects, tasks});
+// 			});
+// });
+
+
+
+// class User {
+// 	constructor(name, interests){
+// 		this.name = name;
+// 		this.interests = interests;
+// 	}
+
+// 	greeting(){
+// 		console.log('Hi, I\'m' + this.name + '.');
+// 	}
+
+// 	get interestsCount() {
+// 		return this.interests ? this.interests.length : 0;
+//     }
+    
+//     set setInterestsCount(count){
+//         return this.interests = count;
+//     }
+// }
+
+
+// class TeamMember extends User {
+// 	constructor(name, interests){
+// 		super(name, interests);
+// 		this._tasks = [];
+// 		this._welcomeText = 'Welcome to the team!';
+// 	}
+
+// 	greeting() {
+// 		console.log('I\'m ' + this.name + '. ' + this._welcomeText);
+// 	}
+
+// 	work() {
+// 		console.log('I\'m working on ' + this._tasks.length + ' tasks. '); 
+// 	}
+
+// 	set tasks(tasks){
+// 		let acceptedTasks = [];
+// 		if (tasks.length > TeamMember.maxTasksCapacity()) {
+// 			acceptedTasks = tasks.slice(0, TeamMember.maxTasksCapacity());
+// 			console.log('It\'s over max capacity. Can only take two.');
+// 		} else {
+// 			acceptedTasks = tasks;
+// 		}
+// 		this._tasks = this._tasks.concat(acceptedTasks);
+//     }
+    
+// 	static maxTasksCapacity(){
+// 			return 2;
+// 	}
+// }
+
+
+// let member = new TeamMember('Sunny',['Traveling']);
+// member.greeting(); // I'm Sunny. Welcome to the team! 출력
+// member.tasks = ['Buy three tickets', 'book a hotel', 'Rent a car'];
+// console.log('테스트');	//it's over max capacity. Can only take two. 출력
+// member.work(); //I'm working on 2 tasks 출력
+// console.log(member.interestsCount); //1 출력
+// member.setInterestsCount = ['count1','count2','count3','count4']; // 변경 사항은 저장되지 않을 것이다.
+// console.log(member.interestsCount); // 1출력
+// console.log(member.tasks); //undefined 출력
+// console.log(member._tasks);
+
+// User.prototype.eat = function(){
+// 	console.log('What will I have for lunch?')
+// };
+// member.eat(); // What will I have for lunch? 출력
+
+// function workout(){
+//     let gym = 'Gym A';
+
+//     const gymStatuses = {'Gym A' : 'open', 'Gym B' : 'open', 'Gym C': 'closed'};
+//     for (let gym in gymStatuses){
+//         console.log(gym + ' is ' + gymStatuses[gym])
+//     }
+
+//     {
+//         const gym = 'Gym B';
+//         console.log('Workout in first block ' + gym);
+//         //다음은 throw TypeError를 던질 것이다.
+//         // gym = 'Gym C';
+//     }
+
+//     console.log('Workout in ' + gym)
+
+//     {
+//         function gym(){
+//             console.log('Workout in a separate gym');
+//         }
+//         gym();
+//     }
+
+//     if(gymStatuses[gym] == 'open'){
+//         let exercises = ['Treadmill','Pushup','Spinning'];
+//     }
     //여기서는 exercises에 접근할 수 없다.
     //console.log(exercises);
 
-    try {
-        let gym = 'Gym C';
-        console.log('Workout in try block  ' + gym);
-        throw new Error('gym is closed');
-    } catch(err){
-        console.log(err);
-        let gym = 'Gym D';
-        console.log('Workout in '+ gym);
-    }
-}
-workout();
+//     try {
+//         let gym = 'Gym C';
+//         console.log('Workout in try block  ' + gym);
+//         throw new Error('gym is closed');
+//     } catch(err){
+//         console.log(err);
+//         let gym = 'Gym D';
+//         console.log('Workout in '+ gym);
+//     }
+// }
+// workout();
 
 
 
