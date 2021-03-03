@@ -3,9 +3,11 @@ package org.fintech.service;
 import java.util.List;
 
 import org.fintech.domain.Criteria;
+import org.fintech.domain.ReplyPageDTO;
 import org.fintech.domain.ReplyVO;
 
 public interface ReplyService {
+
 	//댓글 등록 처리
 	public int register(ReplyVO vo);
 	
@@ -19,8 +21,17 @@ public interface ReplyService {
 	public int remove(Long rno);
 	
 	//댓글 목록 가져오기
-	public List<ReplyVO> getList(Criteria cri, Long bno);
+	public List<ReplyVO> getList(Criteria cri,Long bno);
 	
+	//댓글 갯수 구하기 03.03
+	public ReplyPageDTO getListPage(Criteria cri, Long bno);
 	
 	
 }
+
+
+
+
+
+
+

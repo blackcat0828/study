@@ -31,6 +31,8 @@ public class BoardControllerTests {
 	
 	private MockMvc mockMvc;
 	
+	//MockMvcBuilders ?
+	//요청데이터를 설정할 때 사용하는 static 메서드
 	@Before
 	public void setup() {
 			this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();

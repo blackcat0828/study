@@ -98,13 +98,11 @@ public class BoardController {
 		//rttr.addAttribute("pageNum",cri.getPageNum());//페이지번호
 		//rttr.addAttribute("amount",cri.getAmount());//페이지당 보여지는 갯수
 		//검색조건 & 키워드 속성 지정 02.23
-		//rttr.addAttribute("type",cri.getType());//페이지당 보여지는 갯수
-		//rttr.addAttribute("keyword",cri.getKeyword());//페이지당 보여지는 갯수
-		
-		
+		//rttr.addAttribute("type",cri.getType());
+		//rttr.addAttribute("keyword",cri.getKeyword());
 		
 		//수정이 완료되면 게시판 리스트로 이동
-		//http://localhost:8080/board/list?pageNum=?&amount=?&type=?&keyword=자바
+		//http://localhost:8080/board/list?pageNum=2&amount=10&type=T&keyword=자바
 		return "redirect:/board/list" + cri.getListLink();
 		
 	}
@@ -124,8 +122,10 @@ public class BoardController {
 		//페이징처리 관련 속성 지정 02.22
 		//rttr.addAttribute("pageNum",cri.getPageNum());//페이지번호
 		//rttr.addAttribute("amount",cri.getAmount());//페이지당 보여지는 갯수
+		//검색조건 & 키워드 속성 지정 02.23
 		//rttr.addAttribute("type",cri.getType());
 		//rttr.addAttribute("keyword",cri.getKeyword());
+		
 		
 		return "redirect:/board/list" + cri.getListLink();
 		

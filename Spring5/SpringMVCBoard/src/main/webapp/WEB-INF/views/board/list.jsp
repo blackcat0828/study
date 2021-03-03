@@ -73,20 +73,20 @@
 									<div class="col-lg-12">
 										<form id="searchForm" action="/board/list" method="get">
 											<select name="type">
-												<option value="" 
-													<c:out value="${pageMaker.cri.type == null ? 'selected' : ''}"/>>--</option>
-												<option value="T"
-													<c:out value="${pageMaker.cri.type == 'T' ? 'selected' : ''}"/>>제목</option>
-												<option value="C"
-													<c:out value="${pageMaker.cri.type == 'C' ? 'selected' : ''}"/>>내용</option>
-												<option value="W"
-													<c:out value="${pageMaker.cri.type == 'W' ? 'selected' : ''}"/>>작성자</option>
-												<option value="TC"
-													<c:out value="${pageMaker.cri.type == 'TC' ? 'selected' : ''}"/>>제목 or 내용</option>
-												<option value="TW"
-													<c:out value="${pageMaker.cri.type == 'TW' ? 'selected' : ''}"/>>제목 or 작성자</option>
-												<option value="TWC"
-													<c:out value="${pageMaker.cri.type == 'TWC' ? 'selected' : ''}"/>>제목 or 내용 or 작성자</option>
+												<option value="" <c:out value="${pageMaker.cri.type == null ? 'selected':''}"/>>--
+												</option>
+												<option value="T" <c:out value="${pageMaker.cri.type == 'T' ? 'selected':''}"/>>제목
+												</option>
+												<option value="C" <c:out value="${pageMaker.cri.type == 'C' ? 'selected':''}"/>>내용
+												</option>
+												<option value="W" <c:out value="${pageMaker.cri.type == 'W' ? 'selected':''}"/>>작성자
+												</option>
+												<option value="TC" <c:out value="${pageMaker.cri.type == 'TC' ? 'selected':''}"/>>제목 or 내용
+												</option>
+												<option value="TW" <c:out value="${pageMaker.cri.type == 'TW' ? 'selected':''}"/>>제목 or 작성자
+												</option>
+												<option value="TWC" <c:out value="${pageMaker.cri.type == 'TWC' ? 'selected':''}"/>>제목 or 내용 or 작성자
+												</option>
 											</select>
 											<input type="text" name="keyword"/>
 											<input type="hidden" name="pageNum" 
@@ -141,11 +141,11 @@
 							      <input type="hidden" name="amount" 
 							             value="${pageMaker.cri.amount}">
 							             
-							      <!-- 검색 조건, 키워드 정보도 hidden으로 처리 -->
+							      <!-- 검색조건,키워드 정보도 hidden으로 처리 02.23-->
 							      <input type="hidden" name="type" 
-							             value='<c:out value="${pageMaker.cri.type}" />'>
+							             value='<c:out value="${pageMaker.cri.type}"/>'>
 							      <input type="hidden" name="keyword" 
-							             value='<c:out value="${pageMaker.cri.keyword}" />'>
+							             value='<c:out value="${pageMaker.cri.keyword}"/>'>              
 						   </form>     
                                 
                            <!-- Modal 시작 -->
@@ -284,30 +284,31 @@
  			actionForm.submit();
  		});
  		
- 		
  		//검색버튼 처리 02.23
  		var searchForm = $("#searchForm");
+ 		
  		$("#searchForm button").on("click",function(e){
  			
+ 			//검색조건을 선택하지 않으면 오류 표시
  			if(!searchForm.find("option:selected").val()){
  				alert("검색조건을 선택하세요");
  				return false;
  			}
- 		
+ 			
  			if(!searchForm.find("input[name='keyword']").val()){
  				alert("키워드를 입력하세요!");
  				return false;
  			}
- 		
+ 			
  			//검색후 페이지번호를 1 페이지로 이동하게 한다.
  			searchForm.find("input[name='pageNum']").val("1");
  			
- 			//button을 클릭하면 type=button 으로 지정되어 있지 
- 			//않으면 btuoon 태그는 기본적으로 submit을 실행하므로 
+ 			//button을 클릭하면 type=button 으로 지정되어 있지
+ 			//않으면 button 태그는 기본적으로 submit을 실행하므로 
  			//이것을 중지시키기 위해 선언
  			e.preventDefault();
- 			
- 			searchForm.submit();
+			
+ 			searchForm.submit(); 			
  		});
  		
  		

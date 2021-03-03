@@ -30,18 +30,23 @@ public class Criteria {
 		return type == null ? new String[] {} : type.split("");
 	}
 	
-	
-	
 	public String getListLink() {
-	
+		
 		//여러개의 매개변수를 연결해서 URL 형태로 생성시켜준다.
-		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
-										.queryParam("pageNum", this.pageNum)
-										.queryParam("amount", this.getAmount())
-										.queryParam("type", this.getType())
-										.queryParam("keyword",this.getKeyword());
+		UriComponentsBuilder builder = 
+				UriComponentsBuilder.fromPath("")
+				                    .queryParam("pageNum",this.pageNum)
+				                    .queryParam("amount",this.getAmount())
+				                    .queryParam("type",this.getType())
+				                    .queryParam("keyword",this.getKeyword());
+	    
 		return builder.toUriString();
+		
+				                   
+		    
+				
 	}
+	
 }
 
 

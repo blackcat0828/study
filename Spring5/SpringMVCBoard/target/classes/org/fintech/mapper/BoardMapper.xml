@@ -82,8 +82,7 @@
 		         	 where
 		     ]]>
 		     
-		     <include refid="criteria"></include>
-		    
+     		 <include refid="criteria"/> 	
 		      
 		     <![CDATA[
 		    	 	rownum <= #{pageNum} * #{amount}
@@ -95,18 +94,16 @@
 	
 	<!-- 게시물 전체 데이터수 가져오기 02.22 -->
 	<select id="getTotalCount" resultType="int">
-		select count(*) from tbl_board where 
-			<include refid="criteria"></include>
+		select count(*) from tbl_board 
+		 where 
+		 <include refid="criteria"/>
 		 bno > 0
 	</select>
 	
-	<sql id="criteria">
 	
-		 <!--  
-		     	prefix : 요소의 내용이 있으면 가장 앞에 해당하는 문자열을 붙여준다
-		     	
-		      -->
-		 <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+	<sql id="criteria">
+
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 		     	<foreach item="type" collection="typeArr">
 		     		<trim prefix="OR">
 		     			<choose>
@@ -120,14 +117,9 @@
 		     					writer like '%'||#{keyword}||'%'
 		     				</when>
 		     			</choose>
-		     		</trim>
-		     	</foreach>		     
-		     </trim>
-	
+				</trim>	
+			</foreach>		     
+	   </trim>
 	</sql>
 
 </mapper>
-
-
-
-

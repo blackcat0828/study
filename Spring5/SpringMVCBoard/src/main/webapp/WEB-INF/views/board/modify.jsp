@@ -32,11 +32,13 @@
 					   <input type="hidden" name="pageNum" 
 					          value="<c:out value="${cri.pageNum}"/>">
 					   <input type="hidden" name="amount" 
-					          value="<c:out value="${cri.amount}"/>">    
+					          value="<c:out value="${cri.amount}"/>">
+					   
+					   <!-- 검색조건 & 키워드 hidden 속성 추가 02.23 -->
 					   <input type="hidden" name="type" 
-					          value="<c:out value="${cri.type}"/>">  
+					          value="<c:out value="${cri.type}"/>">       
 					   <input type="hidden" name="keyword" 
-					          value="<c:out value="${cri.keyword}"/>">                   	
+					          value="<c:out value="${cri.keyword}"/>">              	
 						
 					   <div class="form-group">
 					   		<label>번호</label>
@@ -131,20 +133,20 @@
 				//form에서 input 태그중에서 name이 amount 인 값을 복제하여
 				//amountTag 변수에 대입
 				var amountTag = $("input[name='amount']").clone();
-				//검색조건 & 키워드
+				
+				//검색조건 & 키워드 처리 02.23
 				var typeTag = $("input[name='type']").clone();
 				var keywordTag = $("input[name='keyword']").clone();
-				
 				
 				//선택한 요소의 값만 삭제하고 태그는 그대로 둔다.
 			    formObj.empty();
 				//formObj에 pageNumTag 라는 새로운 요소를 추가
 			    formObj.append(pageNumTag);
-			  	//formObj에 amountTag 라는 새로운 요소를 추가
+			    //formObj에 amountTag 라는 새로운 요소를 추가
 			    formObj.append(amountTag);
-			  	
-			  	formObj.append(typeTag);
-			  	formObj.append(keywordTag);
+			   	//검색조건 & 키워드 02.23		  	
+			    formObj.append(typeTag);
+			    formObj.append(keywordTag);
 			}
 			
 			formObj.submit();
