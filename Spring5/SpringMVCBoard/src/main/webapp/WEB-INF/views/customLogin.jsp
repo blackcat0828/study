@@ -26,6 +26,10 @@
 		</div>
 		
 		<div>
+			<input type="checkbox" name="remember-me">자동로그인
+		</div>
+		
+		<div>
 			<input type="submit" value="로그인">
 		</div>
 		

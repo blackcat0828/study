@@ -7,8 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<h1>현재 페이지는 특정맴버만 접근 가능한 페이지입니다.(member.jsp)</h1>
-		<a href="/customLogout">로그아웃</a>
-		
+	<h1> 로그아웃 페이지</h1>
+	
+	<form action="/customLogout" method="post">
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" >
+		<button>로그아웃</button>
+	</form>
 </body>
 </html>

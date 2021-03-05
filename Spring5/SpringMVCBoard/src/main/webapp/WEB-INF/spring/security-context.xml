@@ -13,34 +13,80 @@
 	
 	<!-- CustomAccessDeniedHandler Bean등록 03.03 -->
 	<bean id="customAccessDeniedHandler" class="org.fintech.security.CustomAccessDeniedHandler">
-		
 	</bean>			
 						
-						
-	<!--  
+	<!-- 로그인 성공후 처리 03.05 -->
+	<bean id="customLoginSuccessHandler" class="org.fintech.security.CustomLoginSuccessHandler">
+	</bean>
+	
+
+<!-- 	<bean id="customNoOpPasswordEncoder" class="org.fintech.security.CustomNoOpPasswordEncoder">
+	</bean> -->
+
+
+<!-- 	
+	Bcrypt
+   비밀번호를 저장하는 용도로 만들어진 해시함수로 특정문자열을 암호화하고 체크하는 쪽에서 암호화된
+    비밀번호가 유효한지 여부만 알수 있고 실제 값은 원문대로 되돌릴수 없다. -->
+ 	<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+ 		
+ 	</bean>
+	
+	<security:http>
+	
+		
+		<!-- 03.05 토큰 생성 비활성화 -->
+		<!-- <security:csrf disabled="true" /> -->
+		
+		
+		<!--  
 		intercept ?
 		인증, 권한 등 처리시 사용
 		pattern : 인증처리할 url 지정
 		access : 권한 체크
-	-->
-	<security:http>
+		-->
 		<security:intercept-url pattern="/sample/all" access="permietALL" />
-		<security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MANAGER')" />
 		<security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')" />
 		<!-- <security:form-login/> -->
 		
 		<!-- 스프링에서 제공해주는 로그인 폼이 아니라 개발자가 작성한 로그인 폼 실행 03.03 -->
-		<security:form-login login-page="/customLogin"/>
+		<!-- 로그인 성공후 처리 추가 03.05 -->
+		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccessHandler"/>
+		
+		
+		
+		<!-- 로그아웃 처리 03.05 -->
+		<security:logout logout-url="/customLogout" invalidate-session="true"
+			delete-cookies="remember-me,JSESSIONID"
+		/>
+		
+		<!-- 자동 로그인 기능 추가 03.05 -->
+		<security:remember-me data-source-ref="dataSource" token-validity-seconds = "3600"/>
+		
 		<!-- 403:권한없음 오류 발생시 처리 -->
 		<security:access-denied-handler ref="customAccessDeniedHandler"/>
 	</security:http>
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:user-service>
-				<!-- username : 아이디 
+			
+			<!-- 테이블 이용 권한처리를 위해 선언 03.05 -->
+			<security:jdbc-user-service 
+				data-source-ref="dataSource"
+				users-by-username-query="select userid,userpw,enabled from tbl_member where userid = ?"
+				authorities-by-username-query="select userid,auth from tbl_member_auth where userid = ?"
+			/>
+			
+			<!-- bcrypt를 이용한 비밀번호 인코딩 처리 선언 03.05 -->
+			<security:password-encoder ref="bCryptPasswordEncoder"/>
+			
+			
+			
+			<!-- <security:user-service>
+				username : 아이디 
 					{noop} : 페스워드를 인코딩없이 사용하기 위해 설정
-				-->
+				
 				<security:user name="member" 
 									password="{noop}member"
 									authorities="ROLE_MEMBER"/>
@@ -48,7 +94,7 @@
 									password="{noop}admin"
 									authorities="ROLE_MEMBER,ROLE_ADMIN"/>					
 				
-			</security:user-service>
+			</security:user-service> -->
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>

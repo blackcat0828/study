@@ -8,5 +8,7 @@
 </head>
 <body>
 	<h1>현재 페이지는 관리자만 접근 가능한 페이지입니다.(admin.jsp)</h1>
+	<a href="/customLogout">로그아웃</a>
+	
 </body>
 </html>
