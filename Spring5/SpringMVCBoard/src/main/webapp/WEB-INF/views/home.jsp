@@ -6,7 +6,7 @@
 </head>
 
 <script type="text/javascript">
-	self.location = "/board/list";
+	self.location = "/customLogin";
 </script>
 
 <body>

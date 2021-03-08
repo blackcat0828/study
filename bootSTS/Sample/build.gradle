@@ -1,0 +1,33 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'org.fintech'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	
+	//compile? 컴파일 할때만 dependency 적용
+	//runtim : 실행시 dependency를 적용
+	//providedCompile : 컴파일시에는 필요하지만 배포할때는 제외되는 dependency를 설정할때 사용
+	//providedRuntime : 실행시에도 적용하고 배포시 실행환경에도 포함되는 dependency를 설정할때 사용
+	
+	//의존성이 있는 라이브러리 수정시 본 모듈까지 다시 Build 처리
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//Spring Boot 재시작 없이 프로그램 수정부분 즉시 반영
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//@test 를 이용하여 테스트 수행할때만 적용
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+}
+
+test {
+	useJUnitPlatform()
+}

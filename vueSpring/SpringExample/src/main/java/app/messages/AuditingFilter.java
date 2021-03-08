@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.filter.GenericFilterBean;
 
 public class AuditingFilter extends GenericFilterBean {
-    @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
-            throws IOException, ServletException {
-        long start = new Date().getTime();
-        chain.doFilter(req, res);
-        long elapsed = new Date().getTime() - start;
-        HttpServletRequest request = (HttpServletRequest) req;
-        logger.debug("Request[uri=" + request.getRequestURI() + ", method=" + request.getMethod() 
-        + "] completed in " + elapsed + " ms");
-    }
+  @Override
+  public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+      throws IOException, ServletException {
+    HttpServletRequest request = (HttpServletRequest) req;
+    long start = new Date().getTime();
+    chain.doFilter(req, res);
+    long elapsed = new Date().getTime() - start;
+    logger.debug("Request[uri=" + request.getRequestURI() + ", method=" +
+      request.getMethod() + "] completed in " + elapsed + " ms");
+  }
 }

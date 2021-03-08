@@ -13,13 +13,24 @@
 	}
 
 </style>	
-	
+			
+			
+			
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">게시판 리스트</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            
+            <div class="row">
+				<button id = "logout" class ="btn btn-success btn-xs pull-right">
+				로그아웃
+				</button>
+			</div>
+            
+            
+            
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -248,6 +259,12 @@
  			$("#myModal").modal("show");
  			
  		}
+ 		
+ 		//03.08 로그아웃 버튼 클릭 처리
+ 		$("#logout").on("click",function(){
+ 			self.location = "/customLogout";
+ 		})
+ 		
  		
  		//게시판 등록 버튼 클릭 처리
  		$("#regBtn").on("click",function(){
