@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board.board.mapper.BoardMapper">
+
+	<!-- 게시판 목록 가져오기 03.09 -->
+	<select id="selectBoardList"
+	        resultType="board.board.dto.BoardDto">
+	
+		<!-- 
+			DATE_FORMAT() : 날짜형태의 필드값을 문자열로 변환처리
+			<![CDATA[]] : < > && || 를 태그로 인식하는 것을 방지한다.
+		 -->
+		<![CDATA[
+			select board_idx,
+			       title,
+			       hit_cnt,
+			       DATE_FORMAT(created_datetime,'%Y.%m.%d %H:%i:%s') as created_datetime
+			  from t_board
+			 where deleted_yn = 'N'
+			 order by board_idx desc 			       
+		]]>
+	
+	</select>
+	
+	<!-- 첨부파일 목록 보여주기 03.12 -->
+	<select id="selectBoardFileList" parameterType="int"
+
+			resultType="board.board.dto.BoardFileDto">
+
+		<!--  
+			FORMAT(ROUND(file_size/1024),0) ?
+			mysql에서 제공하는 천단위 콤마 표시			
+		-->	
+		<![CDATA[
+			
+			select idx,board_idx,original_file_name,
+				   FORMAT(ROUND(file_size/1024),0) as file_size
+		      from t_file
+		     where board_idx = #{boardIdx}
+		       and deleted_yn = 'N' 		   
+		
+		]]>
+	
+	
+	</select>
+	
+	<!-- 특정 게시물 첨부파일 다운로드 처리 03.15 -->
+	<select id="selectBoardFileInformation" 
+			parameterType="map" 
+			resultType="board.board.dto.BoardFileDto">
+
+		<![CDATA[
+			select original_file_name,
+			       stored_file_path,
+		           file_size
+		      from t_file
+		     where idx = #{idx}
+		       and board_Idx = #{boardIdx}
+		       and deleted_yn = 'N'      
+		]]>
+	</select>
+	
+	<!-- 
+		신규 게시물 등록처리 03.09
+		useGeneratedKeys="true" ?
+		자동생성 Key를 지원하는 데이터베이스에 대해 사용가능하며
+		keyProperty는 insert후 최종 키값을 가져오기 위해 선언하며
+		keyProperty="키컬럼명" 이런식으로 선언한다.	 
+	-->
+	<insert id="insertBoard" parameterType="board.board.dto.BoardDto"
+	        useGeneratedKeys="true" keyProperty="boardIdx">
+		<![CDATA[
+			insert into t_board(title,contents,created_datetime,creator_id)
+		        values (#{title},#{contents},now(),'admin')
+		]]>        
+	</insert>
+	
+	<!-- 첨부파일 등록 처리 03.12 -->
+	<insert id="insertBoardFileList" 
+			parameterType="board.board.dto.BoardFileDto">
+		
+		<![CDATA[
+			insert into t_file(board_idx,original_file_name,stored_file_path,file_size,creator_id,created_datetime)
+		        values
+		]]>        	 
+	
+		<!-- 
+			collection: 전달받은 인자
+			item: 별칭,
+			separator : 구분자
+		 -->
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.boardIdx},
+				#{item.originalFileName},
+				#{item.storedFilePath},
+				#{item.fileSize},
+				'admin',
+				now()
+			)				
+		</foreach>
+	
+	</insert>
+	
+	<!-- 게시물 리스트에서 클릭한 게시물 조회수 증가 처리 03.10 -->
+	<update id="updateHitCount" parameterType="int">
+		<![CDATA[
+			update t_board
+			   set hit_cnt = hit_cnt + 1
+			 where board_idx = #{boardIdx}  		
+		]]>
+	</update>
+	
+	<!-- 특정 게시물 상세보기 03.10 -->
+	<select id="selectBoardDetail" 
+			parameterType="int" resultType="board.board.dto.BoardDto">
+		<![CDATA[
+			
+			select board_idx,title,contents,hit_cnt,
+				   created_datetime,creator_id
+			  from t_board
+			 where board_idx = #{boardIdx}
+			   and deleted_yn = 'N' 	   	
+		]]>
+	</select>
+	
+	<!-- 특정 게시물 수정 03.10 -->
+	<update id="updateBoard" parameterType="board.board.dto.BoardDto" >
+		<![CDATA[
+			update t_board
+			   set title = #{title},
+			   	   contents = #{contents},
+			   	   updated_datetime = now(),
+			   	   updater_id = 'admin'
+			 where board_idx = #{boardIdx}  	   	
+		]]>
+	</update>
+	
+	<!-- 특정 게시물 삭제 03.10 -->
+	<update id="deleteBoard" parameterType="int">
+		<![CDATA[
+			update t_board
+			   set deleted_yn = 'Y',
+			       updated_datetime = now(),
+			   	   updater_id = 'admin'
+			 where board_idx = #{boardIdx}  	   
+		]]>
+	</update>
+
+</mapper>
+
+
+
+
+
+    

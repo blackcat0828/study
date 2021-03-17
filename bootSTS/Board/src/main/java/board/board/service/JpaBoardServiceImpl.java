@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -61,5 +64,17 @@ public class JpaBoardServiceImpl implements JpaBoardService{
 	public BoardFileEntity selectBoardFileInformation(int boardIdx, int idx) throws Exception {
 		BoardFileEntity boardFile = jpaBoardRepository.findBoardFile(boardIdx, idx);
 		return boardFile;
+	}
+
+	@Override
+	public Page<BoardEntity> getBoardList(Pageable pageable) {
+		//삼항연산자
+		//현재 페이지 번호가 0이면 page 변수에 0을 대입하고
+		//아니면 page 인덱스는 0로 부터 시작하므로 -1 해준다.
+		int page = (pageable.getPageNumber()==0) ? 0 : (pageable.getPageNumber()-1);
+		
+		//페이징 처리시 페이지당 보여주는 게시물 갯수 지정
+		pageable = PageRequest.of(page, 10);
+		return jpaBoardRepository.findAll(pageable);
 	}
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+	<!-- 
+		appender?
+		어디에 어떻게 로그를 출력할 것인지 설정하는 부분
+		Pattern?
+		로그를 보여주는 패턴 지정
+		
+		1. %d: 로그 기록시간
+		2. %p: 로깅 레벨
+		3. %F: 로깅이 발생한 프로그램 파일명  
+		4. %M: 로깅이 발생한 메서드 이름
+		5. %L: 로깅이 발생한 호출지의 라인 수
+		6. %t: 스레드명(thread)
+		7. %m: 로그 메시지
+		8. %C: 로깅이 발생한 클래스명
+		9. %r: 애플리케이션 시작 이후부터 로깅이 발생한 시점까지의 시간		
+		10. %n : LineFeed(한줄밑으로)
+		11. %c: 로깅이 발생한 카테고리
+	  -->
+	  
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%d %5p [%c] %m%n</Pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="console-infolog" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%d %5p %m%n</Pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 
+		로그를 출력하는 태그로 로그 레벨 속성을 통해 출력 레벨을
+		Appender에 전달하는 기능 
+	-->
+	<logger name="board" level="DEBUG" appender-ref="console"/>
+	<logger name="jdbc.sqlonly" level="INFO" appender-ref="console-infolog"/>
+	<logger name="jdbc.resultsettable" level="INFO" appender-ref="console-infolog"/>
+	
+	<!-- 최소 로그로 기록할 단계를 지정한다. -->
+	<root level="off">
+		<appender-ref ref="console"/>
+	</root>
+
+</configuration>

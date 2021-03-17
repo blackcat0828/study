@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>페이징처리된 게시물 리스트</title>
+<link rel="stylesheet" 
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <!-- 부트스트랩 제목을 만들때 사용 -->
+	<div class="jumbotron">
+		<h2>페이징 처리한 게시물 목록</h2>
+	</div>
+	<a href="/jpa/board/write" class="btn btn-success">글 쓰기</a>
+	<table class="table table-striped">
+		<tr>
+			<th>게시물번호</th>
+			<th>제목</th>
+			<th>내용</th>
+			<th>조회수</th>
+		</tr>
+		
+		<!-- 
+		   JpaBoardController에서 속성으로 지정한 boardList 즉
+		   페이징처리된 게시물 목록을 한행씩 가져와 board 변수에 대입  
+		-->
+		<tr th:each = "board : ${boardList}">
+			<td th:text="${board.boardIdx}"></td>
+			<td class="title">
+				<a href="/jpa/board/" th:attrappend="href=${board.boardIdx}" th:text="${board.title}"></a>
+			</td>
+			<td th:text="${board.contents}"></td>
+			<td th:text="${board.hitCnt}"></td>
+		</tr>
+	</table>
+	<nav style="text-align:center;">
+		<!-- 부트스트랩에서 제공하는 페이징 처리 클래스 -->
+		<!--  
+			th:with ?
+			해당 태그를 scope로 갖는 변수를 선언할 수 있게 해주는 속성
+		-->
+		<ul	class="pagination" th:with="start=${T(Math).floor(boardList.number/10)*10 + 1},
+										last=(${start + 9 < boardList.totalPages ? start + 9 : boardList.totalPages})">
+			<li>
+				<a th:href="@{/jpa/board/Paging(page=1)}" aria-label="First">
+					<span aria-hidden="true">첫페이지</span>
+				</a>
+			</li>
+			
+			
+			<li th:class="${boardList.first} ? 'disable'">
+				<a th:href="${boardList.first} ? '#' : @{/jpa/board/Paging(page=${boardList.number})}" aria-label="이전">
+					<span aria-hidden=true>&lt;</span>
+				</a>
+			</li>
+			
+			<!-- 
+				#numbers.sequence(변수1, 변수2)로 선언된 경우 구간에 따른 반복 횟수 만큼의 배열을 생성한다.
+				현재페이지이면 active 태그를 사용하여 선택된 페이지를 반전처리하고 아닌 페이지는 숫자표시
+			 -->
+			<li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == boardList.number + 1} ? 'active'">
+				<a th:text="${page}" th:href="@{/jpa/board/Paging(page=${page})}"></a>
+			</li>
+			
+			
+			<li th:class="${boardList.last} ? 'disable'">
+				<a th:href="${boardList.last} ? '#' : @{/jpa/board/Paging(page=${boardList.number+2})}" aria-label="다음">
+					<span aria-hidden=true>&gt;</span>
+				</a>
+				
+			</li>
+			
+			<li>
+				<a th:href="@{/jpa/board/Paging(page=${boardList.totalPages})}" aria-label="Last">
+					<span aria-hidden="true">마지막 페이지</span>
+				</a>
+			</li>
+			
+		</ul>
+	</nav>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

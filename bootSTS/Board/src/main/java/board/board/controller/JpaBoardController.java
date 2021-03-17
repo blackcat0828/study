@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -83,5 +87,18 @@ public class JpaBoardController {
 		response.getOutputStream().write(files);
 		response.getOutputStream().flush();
 		response.getOutputStream().close();
+	}
+	
+	@RequestMapping(value="/jpa/board/Paging", method=RequestMethod.GET)
+	//@PageableDefault?
+	//페이징처리를 하는 어노테이션으로 페이지수, 총자료수, 정렬등을 기본적으로 제공하는 것으로 만약 값을 지정하지 않으면 자동으로 초기값을 부여한다.
+	//Pageable?
+	//JPA 에서 페이징처리를 쉽게처리
+	//매 쿼리 실행시마다 SQL을 수행하여 페이지수, 총자료수, 정렬등을 갱신한다.
+	public String boardPagingView(@PageableDefault Pageable pageable, Model model) {
+		Page<BoardEntity> boardList = jpaBoardService.getBoardList(pageable);
+		model.addAttribute("boardList",boardList);
+		
+		return "/board/jpaBoardWithPaging";
 	}
 }

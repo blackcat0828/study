@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+<!-- 
+	자바 프로그램에서 @Aspect 등과 같이 AOP 관련 어노테이션을 찾아서 빈등록을
+	자동으로 해준다. 
+-->
+<aop:aspectj-autoproxy/>
+
+<!--  공통기능 -->
+<bean id="logAop" class="board.aop.LogAop" />
+
+<!-- 핵심기능 -->
+<bean id="myCat" class="board.aop.Cats">
+	<!-- Cats 클래스의 멤버변수에 값을 지정할 경우 property 명령문을 사용 -->
+	<property name="name" value="호랑이"/>
+	<property name="age" value="20"/>
+	<property name="color" value="yellow"/>
+</bean>
+
+</beans>
