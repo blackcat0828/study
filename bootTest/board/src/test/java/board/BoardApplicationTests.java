@@ -20,12 +20,12 @@ class BoardApplicationTests {
 	@Autowired
 	private JpaBoardService jpaBoardService;
 	
-	@Ignore
+	@Test
 	public void testSqlSession() {
 		System.out.println(seqlSession.toString());
 	}
 	
-	@Test
+	@Ignore
 	public void insert() {
 		BoardEntity board = new BoardEntity();
 		

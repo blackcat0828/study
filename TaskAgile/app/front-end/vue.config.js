@@ -7,10 +7,10 @@ module.exports = {
       }
     }
   },
-  configureWebpack:{
+  configureWebpack: {
     entry: {
       app: './src/main.js',
-      style:[
+      style: [
         'bootstrap/dist/css/bootstrap.min.css'
       ]
     }
