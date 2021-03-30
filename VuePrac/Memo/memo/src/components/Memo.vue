@@ -3,7 +3,7 @@
         <!-- 2. 등록된 props의 값을 각 DOM에 위치시킨다. -->
         <strong>{{ memo.title }}</strong>
         <p @dblclick="handleDblClick">
-        <!--  1. template 태그를 이용하여 제목 텍스트를 감싸준다. -->
+        <!--  1. template 태그를 이용하여 내용 텍스트를 감싸준다. -->
             <template v-if="!isEditing">{{memo.content}}</template>
         <!-- 2. 수정 필드를 위한 태그를 추가해준다. -->
         <input v-else
@@ -72,7 +72,7 @@
                 // this.isEditing = false;
                 this.$emit('resetEditingId');
             }
-            
+
 
         }
     }

@@ -3,8 +3,8 @@
         <!-- @addMemo = "addMemo" 축약형으로 사용가능 -->
         <memo-form v-on:addMemo="addMemo" />
         <ul class="memo-list">
-            <memo v-for="memo in memos" :key="memo.id" :memo="memo" 
-            @deleteMemo="deleteMemo" 
+            <memo v-for="memo in memos" :key="memo.id" :memo="abc"
+            @deleteMemo="deleteMemo"
             @updateMemo="updateMemo"
             :editingId="editingId"
             @setEditingId="SET_EDITING_ID"
@@ -60,7 +60,7 @@ export default {
         //     // 로컬 스토리지 사용시 코드
         //     // this.memos.push(payload);
         //     // this.storeMemo();
-            
+
         //     // 1. axios 객체의 post 메소드를 이용하여 데이터를 추가한다.
         //     memoAPIcore.post('/', payload)
         //         .then(res => {
@@ -110,7 +110,7 @@ export default {
             'deleteMemo',
             'updateMemo'
         ])
-        
+
     }
 }
 </script>
