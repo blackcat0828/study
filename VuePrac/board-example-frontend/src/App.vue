@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="container-fluid ">
     <!-- header라는 이름을 부여받은 router-view 컴포넌트 -->
+
     <router-view name="header"/>
     <!-- 이름이 없는 router-view 컴포넌트는 자동으로 default라는 이름을 부여받는다. -->
     <router-view/>
